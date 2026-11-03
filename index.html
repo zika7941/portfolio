@@ -1,212 +1,557 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang='zh-CN'>
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>张明正 · 个人作品集</title>
+<meta charset='UTF-8'>
+<meta name='viewport' content='width=device-width,initial-scale=1'>
+<meta name='description' content='张明正 · 河南工程学院 土木工程（装配式建筑方向）· 用 AI 给 CAD 提效'>
+<meta name='theme-color' content='#05070d'>
+<title>张明正 · Portfolio</title>
 <style>
 :root{
-  --bg:#0b2c5f;
-  --bg2:#082247;
-  --line:rgba(255,255,255,.85);
-  --line-soft:rgba(255,255,255,.35);
-  --line-faint:rgba(255,255,255,.14);
-  --txt:#f2f6ff;
-  --dim:rgba(242,246,255,.62);
-  --accent:#ffcf5c;
-  --mono:ui-monospace,SFMono-Regular,Menlo,Consolas,"Courier New",monospace;
+  --bg:#05070d;
+  --txt:#eaf0f8;
+  --dim:#8a97ad;
+  --dim2:#5f6b80;
+  --stroke:rgba(255,255,255,.085);
+  --stroke2:rgba(255,255,255,.16);
+  --card:rgba(255,255,255,.028);
+  --acc:#5eead4;
+  --acc2:#7c9cff;
+  --acc3:#c084fc;
+  --mono:ui-monospace,SFMono-Regular,Menlo,Consolas,'Courier New',monospace;
+  --sans:-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Hiragino Sans GB','Microsoft YaHei',system-ui,sans-serif;
+  --ease:cubic-bezier(.22,1,.36,1);
+  --maxw:1080px;
 }
 *{margin:0;padding:0;box-sizing:border-box}
-html{scroll-behavior:smooth}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
 body{
-  background:var(--bg);
-  color:var(--txt);
-  font-family:"PingFang SC","Hiragino Sans GB","Microsoft YaHei",system-ui,sans-serif;
-  line-height:1.7;
-  -webkit-font-smoothing:antialiased;
+  background:var(--bg);color:var(--txt);font-family:var(--sans);
+  line-height:1.72;-webkit-font-smoothing:antialiased;overflow-x:hidden;
 }
-.grid-bg{position:fixed;inset:0;z-index:-1;
-  background-image:
-    linear-gradient(rgba(255,255,255,.05) 1px,transparent 1px),
-    linear-gradient(90deg,rgba(255,255,255,.05) 1px,transparent 1px),
-    linear-gradient(rgba(255,255,255,.09) 1px,transparent 1px),
-    linear-gradient(90deg,rgba(255,255,255,.09) 1px,transparent 1px);
-  background-size:8px 8px,8px 8px,40px 40px,40px 40px;
-}
-.wrap{max-width:960px;margin:0 auto;padding:0 24px}
-.mono{font-family:var(--mono)}
-/* ---- nav ---- */
-nav{position:sticky;top:0;z-index:10;background:rgba(8,34,71,.9);backdrop-filter:blur(6px);border-bottom:1px solid var(--line-soft)}
-.nav-in{display:flex;align-items:center;justify-content:space-between;height:56px}
-.brand{font-size:13px;letter-spacing:.25em;color:var(--accent);text-decoration:none}
-.links a{color:var(--dim);text-decoration:none;font-size:14px;margin-left:22px;letter-spacing:.15em}
-.links a:hover{color:var(--txt)}
-/* ---- hero ---- */
-header.hero{padding:96px 0 64px}
-.anno{font-size:12px;letter-spacing:.3em;color:var(--dim);margin-bottom:18px}
-.hero h1{font-size:64px;letter-spacing:.18em;line-height:1.2;font-weight:700}
-.dimline{display:flex;align-items:center;gap:12px;margin:22px 0}
-.dimline .seg{height:1px;background:var(--line-soft);flex:1;position:relative}
-.dimline .seg:first-child::before,.dimline .seg:last-child::after{content:"";position:absolute;top:-4px;width:1px;height:9px;background:var(--line-soft)}
-.dimline .seg:first-child::before{left:0}
-.dimline .seg:last-child::after{right:0}
-.dimline em{font-style:normal;font-family:var(--mono);font-size:13px;letter-spacing:.4em;color:var(--dim)}
-.hero .sub{font-size:17px;color:var(--dim);margin:6px 0}
-.hero .tagline{font-size:19px;margin:14px 0 30px}
-.hero .tagline b{color:var(--accent);font-weight:600}
-.btn{display:inline-block;border:1px solid var(--line);color:var(--txt);padding:10px 26px;text-decoration:none;letter-spacing:.2em;font-size:14px;margin:0 12px 12px 0;transition:background .2s}
-.btn:hover{background:rgba(255,255,255,.12)}
-.btn.acc{border-color:var(--accent);color:var(--accent)}
-.btn.acc:hover{background:rgba(255,207,92,.12)}
-/* ---- sections ---- */
-section.block{border:1px solid var(--line-soft);outline:1px solid var(--line-faint);outline-offset:6px;background:rgba(10,40,90,.55);padding:34px 32px;margin:56px 0}
-.sec-head{display:flex;align-items:baseline;gap:14px;border-bottom:1px solid var(--line-soft);padding-bottom:12px;margin-bottom:26px}
-.sec-no{font-size:13px;color:var(--accent);letter-spacing:.2em}
-.sec-head h2{font-size:22px;letter-spacing:.3em;font-weight:600}
-.sec-en{font-size:12px;color:var(--dim);letter-spacing:.3em;margin-left:auto}
-/* ---- projects ---- */
-.proj{border:1px dashed var(--line-soft);padding:22px;margin-bottom:18px;background:rgba(255,255,255,.03)}
-.proj:last-child{margin-bottom:0}
-.proj h3{font-size:18px;letter-spacing:.08em;margin-bottom:4px}
-.proj .meta{font-family:var(--mono);font-size:12px;color:var(--accent);letter-spacing:.12em;margin-bottom:10px}
-.proj p{color:var(--dim);font-size:15px}
-.proj .note{margin-top:10px;font-size:13px;color:var(--dim);border-left:2px solid var(--accent);padding-left:10px}
-.chip{display:inline-block;border:1px solid var(--line-soft);padding:3px 12px;font-size:12px;margin:10px 8px 0 0;color:var(--dim);font-family:var(--mono);letter-spacing:.06em}
-/* ---- skills ---- */
-.skill-group{margin-bottom:22px}
-.skill-group:last-child{margin-bottom:0}
-.skill-group h4{font-size:15px;letter-spacing:.2em;margin-bottom:10px;color:var(--txt)}
-.skill-group h4 .en{font-family:var(--mono);font-size:11px;color:var(--dim);letter-spacing:.25em;margin-left:10px}
-/* ---- edu ---- */
-.edu-item{display:flex;gap:18px;align-items:baseline;flex-wrap:wrap}
-.edu-item .school{font-size:19px;letter-spacing:.1em}
-.edu-item .detail{color:var(--dim);font-size:15px}
-/* ---- contact ---- */
-.contact-line{font-size:16px;color:var(--dim);margin-bottom:8px}
-.contact-line b{color:var(--txt);font-weight:500}
-/* ---- title block footer ---- */
-footer{margin:64px 0 48px}
-table.tb{width:100%;border-collapse:collapse;font-size:14px}
-table.tb td{border:1px solid var(--line-soft);padding:9px 14px}
-table.tb .k{font-family:var(--mono);font-size:12px;color:var(--dim);letter-spacing:.2em;width:70px;text-align:center;background:rgba(255,255,255,.04)}
-.foot-note{text-align:center;margin-top:16px;font-size:11px;letter-spacing:.35em;color:var(--dim)}
-/* ---- reveal ---- */
-.rv{opacity:0;transform:translateY(26px);transition:opacity .7s ease,transform .7s ease}
+::selection{background:rgba(94,234,212,.24);color:#fff}
+a{color:inherit;text-decoration:none}
+.mono{font-family:var(--mono);font-variant-numeric:tabular-nums}
+
+/* ---------- ambient ---------- */
+.progress{position:fixed;top:0;left:0;right:0;height:2px;z-index:80;background:transparent}
+.progress i{display:block;height:100%;width:100%;transform:scaleX(0);transform-origin:0 50%;
+  background:linear-gradient(90deg,var(--acc),var(--acc2) 55%,var(--acc3));transition:transform .1s linear}
+.aurora{position:fixed;inset:-25% -10%;z-index:-3;pointer-events:none;filter:blur(90px);opacity:.55}
+.aurora span{position:absolute;border-radius:50%;display:block;will-change:transform}
+.aurora .b1{width:46vw;height:46vw;left:-6vw;top:2vh;background:radial-gradient(circle at 50% 50%,rgba(94,234,212,.55),transparent 68%);animation:drift1 26s ease-in-out infinite}
+.aurora .b2{width:52vw;height:52vw;right:-10vw;top:-6vh;background:radial-gradient(circle at 50% 50%,rgba(124,156,255,.5),transparent 68%);animation:drift2 32s ease-in-out infinite}
+.aurora .b3{width:40vw;height:40vw;left:32vw;bottom:-14vh;background:radial-gradient(circle at 50% 50%,rgba(192,132,252,.34),transparent 70%);animation:drift3 38s ease-in-out infinite}
+@keyframes drift1{50%{transform:translate3d(6vw,4vh,0) scale(1.12)}}
+@keyframes drift2{50%{transform:translate3d(-7vw,6vh,0) scale(1.08)}}
+@keyframes drift3{50%{transform:translate3d(4vw,-6vh,0) scale(1.15)}}
+.dots{position:fixed;inset:0;z-index:-2;pointer-events:none;
+  background-image:radial-gradient(rgba(255,255,255,.085) 1px,transparent 1px);
+  background-size:26px 26px;
+  -webkit-mask-image:radial-gradient(120% 90% at 50% 12%,#000 0%,#000 45%,transparent 88%);
+  mask-image:radial-gradient(120% 90% at 50% 12%,#000 0%,#000 45%,transparent 88%)}
+.cursor-glow{position:fixed;width:420px;height:420px;left:0;top:0;z-index:-1;pointer-events:none;
+  background:radial-gradient(circle,rgba(94,234,212,.10),transparent 62%);
+  transform:translate3d(-50%,-50%,0);will-change:left,top}
+
+/* ---------- nav ---------- */
+.nav{position:fixed;top:0;left:0;right:0;z-index:60;
+  background:rgba(5,7,13,.62);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);
+  border-bottom:1px solid var(--stroke)}
+.nav-in{max-width:var(--maxw);margin:0 auto;padding:0 24px;height:64px;
+  display:flex;align-items:center;justify-content:space-between;gap:16px}
+.brand{display:inline-flex;align-items:center;gap:9px;font-family:var(--mono);
+  font-size:12px;letter-spacing:.2em;color:var(--txt)}
+.brand i{width:7px;height:7px;border-radius:2px;background:var(--acc);
+  box-shadow:0 0 12px rgba(94,234,212,.9);display:block}
+.brand span{color:var(--dim2);letter-spacing:.14em}
+.links{display:flex;gap:4px}
+.links a{position:relative;font-size:13.5px;color:var(--dim);padding:8px 13px;border-radius:8px;
+  transition:color .25s,background .25s}
+.links a:hover{color:var(--txt);background:rgba(255,255,255,.05)}
+.links a.on{color:var(--txt)}
+.links a.on::after{content:'';position:absolute;left:13px;right:13px;bottom:3px;height:1.5px;
+  background:linear-gradient(90deg,var(--acc),var(--acc2));border-radius:2px}
+
+/* ---------- layout ---------- */
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px}
+.sec{padding:96px 0 12px}
+.sec-head{display:flex;align-items:baseline;gap:14px;margin-bottom:34px;flex-wrap:wrap}
+.sec-head .num{font-size:12px;letter-spacing:.18em;color:var(--acc)}
+.sec-head h2{font-size:clamp(24px,3.4vw,34px);font-weight:650;letter-spacing:-.01em;line-height:1.2}
+.sec-head .en{font-size:11px;letter-spacing:.32em;color:var(--dim2);margin-left:auto;text-transform:uppercase}
+
+/* ---------- hero ---------- */
+.hero{min-height:100svh;display:flex;align-items:center;padding:120px 0 90px;position:relative}
+.eyebrow{display:inline-flex;align-items:center;gap:10px;padding:7px 15px;border-radius:999px;
+  border:1px solid var(--stroke2);background:rgba(255,255,255,.035);font-size:12.5px;
+  color:#b9c6d8;letter-spacing:.02em;backdrop-filter:blur(8px)}
+.eyebrow .dot{width:6px;height:6px;border-radius:50%;background:var(--acc);display:block;
+  box-shadow:0 0 0 0 rgba(94,234,212,.7);animation:pulse 2.6s infinite}
+@keyframes pulse{70%{box-shadow:0 0 0 9px rgba(94,234,212,0)}100%{box-shadow:0 0 0 0 rgba(94,234,212,0)}}
+.hero h1{margin-top:30px;font-size:clamp(56px,11.5vw,132px);line-height:.94;font-weight:700;
+  letter-spacing:-.035em;
+  background:linear-gradient(160deg,#ffffff 8%,#cfe9e6 42%,#8ea6d8 78%,#9b8bd0 100%);
+  -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.name-en{margin-top:20px;font-size:12px;letter-spacing:.52em;color:var(--dim2);text-indent:.52em}
+.tagline{margin-top:26px;font-size:clamp(16.5px,2.1vw,21px);color:#c3cfdf;max-width:640px;line-height:1.75}
+.tagline b{font-weight:650;
+  background:linear-gradient(100deg,var(--acc),var(--acc2));
+  -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.actions{display:flex;gap:13px;margin-top:42px;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;gap:9px;padding:14px 28px;border-radius:999px;
+  font-size:14.5px;font-weight:550;letter-spacing:.01em;transition:transform .3s var(--ease),box-shadow .3s,background .3s,border-color .3s}
+.btn .arw{transition:transform .3s var(--ease);font-family:var(--mono)}
+.btn.primary{color:#03191c;background:linear-gradient(135deg,var(--acc),var(--acc2));
+  box-shadow:0 10px 34px -10px rgba(94,234,212,.6),0 0 0 1px rgba(255,255,255,.12) inset}
+.btn.primary:hover{transform:translateY(-2px);box-shadow:0 16px 44px -10px rgba(94,234,212,.75)}
+.btn.primary:hover .arw{transform:translateX(4px)}
+.btn.ghost{border:1px solid var(--stroke2);color:#d8e2f0;background:rgba(255,255,255,.03)}
+.btn.ghost:hover{transform:translateY(-2px);background:rgba(255,255,255,.075);border-color:rgba(255,255,255,.28)}
+.scroll-hint{position:absolute;left:24px;bottom:34px;display:flex;align-items:center;gap:12px;
+  font-family:var(--mono);font-size:10.5px;letter-spacing:.34em;color:var(--dim2)}
+.scroll-hint .line{width:52px;height:1px;background:linear-gradient(90deg,var(--acc),transparent);
+  position:relative;overflow:hidden}
+.scroll-hint .line::after{content:'';position:absolute;inset:0;background:var(--acc);
+  animation:sweep 2.4s ease-in-out infinite}
+@keyframes sweep{0%{transform:translateX(-100%)}60%,100%{transform:translateX(100%)}}
+
+/* ---------- cards ---------- */
+.card{position:relative;border:1px solid var(--stroke);border-radius:20px;overflow:hidden;
+  background:linear-gradient(180deg,rgba(255,255,255,.052),rgba(255,255,255,.014));
+  backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
+  transition:border-color .35s,transform .35s var(--ease),box-shadow .35s}
+.card::before{content:'';position:absolute;inset:0;pointer-events:none;opacity:0;transition:opacity .4s;
+  background:radial-gradient(360px circle at var(--mx,50%) var(--my,0%),rgba(94,234,212,.13),transparent 62%)}
+.card:hover{border-color:rgba(255,255,255,.2);transform:translateY(-3px);
+  box-shadow:0 26px 60px -34px rgba(0,0,0,.9)}
+.card:hover::before{opacity:1}
+.card .inner{position:relative;z-index:1}
+
+.feat{display:grid;grid-template-columns:1.06fr .94fr;gap:0;margin-bottom:18px}
+.feat .feat-body{padding:34px 34px 34px 36px}
+.kicker{font-size:10.5px;letter-spacing:.26em;color:var(--acc);margin-bottom:14px}
+.feat h3{font-size:clamp(21px,2.5vw,26px);font-weight:650;letter-spacing:-.01em}
+.card p{margin-top:12px;font-size:14.8px;color:#a9b6c8;line-height:1.82}
+.card p code{font-family:var(--mono);font-size:.9em;padding:1.5px 6px;border-radius:5px;
+  background:rgba(94,234,212,.1);color:#a9f5e6;border:1px solid rgba(94,234,212,.18)}
+.chips{display:flex;flex-wrap:wrap;gap:7px;margin-top:20px}
+.chip{font-family:var(--mono);font-size:11px;letter-spacing:.05em;padding:5px 11px;border-radius:999px;
+  border:1px solid var(--stroke);color:#9fb0c6;background:rgba(255,255,255,.028);transition:color .3s,border-color .3s}
+.card:hover .chip{color:#c3d2e4;border-color:rgba(255,255,255,.15)}
+.badge-soon{display:inline-flex;align-items:center;gap:8px;margin-top:22px;padding:7px 14px;border-radius:8px;
+  font-size:11px;letter-spacing:.13em;color:#ffd88a;
+  background:rgba(255,207,92,.085);border:1px solid rgba(255,207,92,.22)}
+.badge-soon i{width:5px;height:5px;border-radius:50%;background:#ffcf5c;display:block;
+  animation:pulse2 2s infinite}
+@keyframes pulse2{50%{opacity:.28}}
+
+.feat-art{position:relative;border-left:1px solid var(--stroke);display:flex;align-items:center;
+  justify-content:center;padding:26px;min-height:280px;overflow:hidden;
+  background:radial-gradient(120% 100% at 80% 10%,rgba(94,234,212,.09),transparent 58%),
+             radial-gradient(90% 90% at 10% 90%,rgba(124,156,255,.1),transparent 60%)}
+.feat-art::after{content:'';position:absolute;inset:0;pointer-events:none;
+  background-image:linear-gradient(rgba(255,255,255,.045) 1px,transparent 1px),
+                   linear-gradient(90deg,rgba(255,255,255,.045) 1px,transparent 1px);
+  background-size:22px 22px;
+  -webkit-mask-image:radial-gradient(70% 70% at 50% 50%,#000,transparent 92%);
+  mask-image:radial-gradient(70% 70% at 50% 50%,#000,transparent 92%)}
+.feat-art svg{position:relative;z-index:1;width:100%;max-width:340px;height:auto}
+
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.grid2 .inner{padding:28px 28px 30px}
+.grid2 h3{font-size:19px;font-weight:640;letter-spacing:-.005em}
+.art-sm{position:relative;height:132px;margin:-28px -28px 22px;border-bottom:1px solid var(--stroke);
+  display:flex;align-items:center;justify-content:center;overflow:hidden;
+  background:radial-gradient(110% 120% at 50% 0%,rgba(124,156,255,.1),transparent 62%)}
+.art-sm svg{width:78%;max-width:230px;height:auto;opacity:.9}
+
+/* ---------- skills ---------- */
+.skill-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.skill-grid .inner{padding:26px 24px 28px}
+.mini-k{font-size:10.5px;letter-spacing:.28em;color:var(--dim2);margin-bottom:10px}
+.skill-grid h4{font-size:16px;font-weight:620;margin-bottom:16px}
+.skill-grid .chips{margin-top:0}
+
+/* ---------- edu ---------- */
+.edu{position:relative;padding:30px 32px 30px 34px;display:flex;align-items:center;
+  justify-content:space-between;gap:24px;flex-wrap:wrap}
+.edu::before{content:'';position:absolute;left:0;top:22px;bottom:22px;width:2px;border-radius:2px;
+  background:linear-gradient(180deg,var(--acc),var(--acc2),transparent)}
+.edu-main{display:flex;flex-direction:column;gap:6px}
+.edu-school{font-size:clamp(18px,2.2vw,21px);font-weight:640}
+.edu-detail{font-size:14px;color:var(--dim)}
+.edu-time{font-family:var(--mono);font-size:11.5px;letter-spacing:.2em;color:var(--acc);
+  padding:6px 13px;border-radius:999px;border:1px solid rgba(94,234,212,.24);background:rgba(94,234,212,.07)}
+
+/* ---------- contact ---------- */
+.contact-card{padding:52px 36px;text-align:center;
+  background:radial-gradient(90% 130% at 50% 0%,rgba(94,234,212,.10),transparent 62%),
+             linear-gradient(180deg,rgba(255,255,255,.05),rgba(255,255,255,.012))}
+.contact-card h3{font-size:clamp(22px,3.2vw,30px);font-weight:650;letter-spacing:-.015em}
+.contact-card .sub{margin-top:10px;font-size:14.5px;color:var(--dim)}
+.mail-row{display:inline-flex;align-items:center;gap:12px;margin-top:28px;padding:12px 14px 12px 22px;
+  border-radius:999px;border:1px solid var(--stroke2);background:rgba(255,255,255,.04);
+  transition:border-color .3s,background .3s}
+.mail-row:hover{border-color:rgba(94,234,212,.4);background:rgba(94,234,212,.06)}
+.mail-row .addr{font-family:var(--mono);font-size:14.5px;letter-spacing:.02em;color:#e6eefb}
+.copy{font-family:var(--mono);font-size:11px;letter-spacing:.12em;padding:7px 14px;border-radius:999px;
+  border:1px solid var(--stroke2);color:var(--dim);background:rgba(255,255,255,.04);cursor:pointer;
+  transition:all .25s}
+.copy:hover{color:var(--acc);border-color:rgba(94,234,212,.45);background:rgba(94,234,212,.1)}
+.copy.done{color:#03191c;background:linear-gradient(135deg,var(--acc),var(--acc2));border-color:transparent}
+
+/* ---------- footer ---------- */
+footer{margin-top:96px;border-top:1px solid var(--stroke);padding:28px 0 42px}
+.foot-in{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;
+  font-family:var(--mono);font-size:11px;letter-spacing:.14em;color:var(--dim2)}
+.foot-in .acct{color:var(--acc)}
+
+/* ---------- reveal ---------- */
+.rv{opacity:0;transform:translateY(26px);
+  transition:opacity .85s var(--ease),transform .85s var(--ease);
+  transition-delay:calc(var(--d,0)*85ms)}
 .rv.on{opacity:1;transform:none}
+
+@media(max-width:900px){
+  .feat{grid-template-columns:1fr}
+  .feat-art{border-left:0;border-top:1px solid var(--stroke);min-height:230px;padding:22px}
+  .skill-grid{grid-template-columns:1fr 1fr}
+}
 @media(max-width:640px){
-  .hero h1{font-size:44px}
-  section.block{padding:24px 20px}
-  .links a{margin-left:14px}
+  .nav-in{height:58px;padding:0 18px}
+  .brand span{display:none}
+  .links a{padding:7px 9px;font-size:12.5px}
+  .wrap{padding:0 18px}
+  .sec{padding:72px 0 8px}
+  .hero{padding:104px 0 78px;min-height:auto}
+  .hero h1{letter-spacing:-.045em}
+  .name-en{letter-spacing:.36em;text-indent:.36em;font-size:10.5px}
+  .scroll-hint{left:18px;bottom:22px}
+  .grid2{grid-template-columns:1fr}
+  .skill-grid{grid-template-columns:1fr}
+  .feat .feat-body{padding:26px 22px}
+  .grid2 .inner{padding:24px 22px 26px}
+  .art-sm{margin:-24px -22px 20px}
+  .edu{padding:24px 22px}
+  .contact-card{padding:40px 22px}
+  .mail-row{padding:10px 10px 10px 18px}
+  .copy{padding:6px 11px}
+}
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  .rv{opacity:1;transform:none}
 }
 </style>
 </head>
-<body id="top">
-<div class="grid-bg"></div>
+<body>
 
-<nav>
-  <div class="wrap nav-in">
-    <a class="brand mono" href="#top">ZMZ · SHEET</a>
-    <div class="links">
-      <a href="#projects">项目</a>
-      <a href="#skills">技能</a>
-      <a href="#education">教育</a>
-      <a href="#contact">联系</a>
-    </div>
+<div class='progress'><i></i></div>
+<div class='aurora'><span class='b1'></span><span class='b2'></span><span class='b3'></span></div>
+<div class='dots'></div>
+<div class='cursor-glow'></div>
+
+<header class='nav'>
+  <div class='nav-in'>
+    <a class='brand' href='#top'><i></i>ZMZ<span>/PORTFOLIO</span></a>
+    <nav class='links'>
+      <a href='#projects'>项目</a>
+      <a href='#skills'>技能</a>
+      <a href='#education'>教育</a>
+      <a href='#contact'>联系</a>
+    </nav>
   </div>
-</nav>
+</header>
 
-<div class="wrap">
+<main id='top'>
 
-  <header class="hero rv">
-    <div class="anno mono">SHEET 01 / 05 · SCALE 1:1 · UNIT mm</div>
-    <h1>张明正</h1>
-    <div class="dimline"><span class="seg"></span><em>ZHANG MINGZHENG</em><span class="seg"></span></div>
-    <p class="sub">河南工程学院 · 土木工程（装配式建筑方向）· 2027 届本科</p>
-    <p class="tagline">用 <b>AI</b> 给 <b>CAD</b> 提效的土木学生</p>
-    <a class="btn acc" href="#projects">查看项目</a>
-    <a class="btn" href="#contact">联系方式</a>
-  </header>
-
-  <section id="projects" class="block rv">
-    <div class="sec-head">
-      <span class="sec-no mono">02</span><h2>项目</h2><span class="sec-en mono">PROJECTS</span>
+  <section class='hero'>
+    <div class='wrap'>
+      <div class='eyebrow rv'><i class='dot'></i>2027 届 · 河南工程学院 · 装配式建筑方向</div>
+      <h1 class='rv' style='--d:1'>张明正</h1>
+      <div class='name-en mono rv' style='--d:2'>ZHANG MINGZHENG</div>
+      <p class='tagline rv' style='--d:3'>用 <b>AI</b> 给 <b>CAD</b> 提效的土木学生 —— 把重复的绘图活交给代码，把判断力留给自己。</p>
+      <div class='actions rv' style='--d:4'>
+        <a class='btn primary' href='#projects'>查看项目<span class='arw'>→</span></a>
+        <a class='btn ghost' href='#contact'>联系方式</a>
+      </div>
     </div>
+    <div class='scroll-hint'><span class='line'></span>SCROLL</div>
+  </section>
 
-    <div class="proj">
-      <h3>AI 一键出图</h3>
-      <div class="meta">PERSONAL PROJECT · 2026</div>
-      <p>自然语言描述设计需求，大模型生成 ezdxf 参数化绘图代码，一键输出 DXF 图纸。内置"标注链规则"，从源头避免出图比例翻车。</p>
-      <div class="note">在线 Demo 即将上线，敬请期待。</div>
-      <div><span class="chip">Python</span><span class="chip">ezdxf</span><span class="chip">LLM</span><span class="chip">DXF</span></div>
-    </div>
+  <section id='projects' class='sec'>
+    <div class='wrap'>
+      <div class='sec-head rv'>
+        <span class='num mono'>01</span>
+        <h2>项目</h2>
+        <span class='en mono'>Projects</span>
+      </div>
 
-    <div class="proj">
-      <h3>"建美中原"建筑机器人大赛</h3>
-      <div class="meta">PROVINCIAL 2ND PRIZE · 2025</div>
-      <p>河南省建筑机器人竞赛，获省级二等奖。</p>
-      <div><span class="chip">建筑机器人</span><span class="chip">省级二等奖</span></div>
-    </div>
+      <article class='card feat rv' style='--d:1'>
+        <div class='inner feat-body'>
+          <div class='kicker mono'>PERSONAL PROJECT · 2026</div>
+          <h3>AI 一键出图</h3>
+          <p>自然语言描述设计需求，大模型生成 <code>ezdxf</code> 参数化绘图代码，一键输出 DXF 图纸。内置「标注链规则」，从源头避免出图比例翻车。</p>
+          <div class='chips'>
+            <span class='chip'>Python</span><span class='chip'>ezdxf</span>
+            <span class='chip'>LLM</span><span class='chip'>DXF</span>
+          </div>
+          <div class='badge-soon mono'><i></i>在线 Demo 即将上线</div>
+        </div>
+        <div class='feat-art'>
+          <svg viewBox='0 0 320 230' fill='none' xmlns='http://www.w3.org/2000/svg' aria-hidden='true'>
+            <g stroke='#5eead4' stroke-width='1.1' opacity='.5'>
+              <path d='M30 210V30h260' stroke-dasharray='3 5'/>
+              <path d='M30 210h260' stroke-dasharray='3 5'/>
+            </g>
+            <rect x='42' y='42' width='236' height='150' stroke='#5eead4' stroke-width='1.6' opacity='.95'/>
+            <path d='M42 122h96M138 42v150M138 122h140M208 122v70' stroke='#5eead4' stroke-width='1.3' opacity='.8'/>
+            <rect x='138' y='42' width='70' height='80' stroke='#7c9cff' stroke-width='1.1' stroke-dasharray='5 4' opacity='.85'/>
+            <circle cx='173' cy='82' r='13' stroke='#7c9cff' stroke-width='1' opacity='.6'/>
+            <path d='M173 69v-9M173 95v9M160 82h-9M186 82h9' stroke='#7c9cff' stroke-width='1' opacity='.55'/>
+            <g stroke='#5eead4' stroke-width='1' opacity='.55'>
+              <path d='M42 205h236'/><path d='M42 200v10'/><path d='M278 200v10'/>
+              <path d='M162 200v-6'/>
+            </g>
+            <g fill='#a9f5e6' font-family='ui-monospace,monospace' font-size='8' opacity='.9'>
+              <text x='62' y='86'>LIVING</text>
+              <text x='150' y='150'>BATH</text>
+              <text x='222' y='100'>BEDROOM</text>
+              <text x='150' y='196' text-anchor='middle'>24800</text>
+            </g>
+            <g stroke='#c084fc' stroke-width='1' opacity='.8'>
+              <path d='M60 60h28'/><path d='M60 60v-8'/><path d='M88 60v-8'/>
+            </g>
+          </svg>
+        </div>
+      </article>
 
-    <div class="proj">
-      <h3>土石坝渗流数值模拟</h3>
-      <div class="meta">GRADUATION PROJECT · 2026</div>
-      <p>毕业设计课题：土石坝渗流场数值模拟分析。</p>
-      <div><span class="chip">数值模拟</span><span class="chip">渗流分析</span></div>
+      <div class='grid2'>
+        <article class='card rv' style='--d:2'>
+          <div class='inner'>
+            <div class='art-sm'>
+              <svg viewBox='0 0 240 110' fill='none' xmlns='http://www.w3.org/2000/svg' aria-hidden='true'>
+                <g stroke='#7c9cff' stroke-width='1.2' opacity='.85'>
+                  <path d='M40 96h160'/><path d='M60 96V64'/><path d='M60 64l46-22'/><path d='M106 42l30 16'/>
+                  <circle cx='106' cy='42' r='7'/><circle cx='136' cy='58' r='5'/>
+                  <path d='M136 58l22-30'/><path d='M158 28l14 6'/>
+                </g>
+                <g stroke='#5eead4' stroke-width='1' opacity='.6'>
+                  <circle cx='106' cy='42' r='16' stroke-dasharray='4 4'/>
+                  <path d='M40 96v-8M200 96v-8M40 88h160' stroke-dasharray='4 4'/>
+                </g>
+                <circle cx='60' cy='96' r='3' fill='#5eead4'/>
+              </svg>
+            </div>
+            <div class='kicker mono' style='color:#9fb0c6'>PROVINCIAL AWARD · 2025</div>
+            <h3>「建美中原」建筑机器人大赛</h3>
+            <p>河南省建筑机器人竞赛，省级二等奖。</p>
+            <div class='chips'><span class='chip'>建筑机器人</span><span class='chip'>省级二等奖</span></div>
+          </div>
+        </article>
+
+        <article class='card rv' style='--d:3'>
+          <div class='inner'>
+            <div class='art-sm'>
+              <svg viewBox='0 0 240 110' fill='none' xmlns='http://www.w3.org/2000/svg' aria-hidden='true'>
+                <path d='M28 92h184' stroke='#7c9cff' stroke-width='1.1' opacity='.5' stroke-dasharray='3 4'/>
+                <path d='M56 92l26-52h76l22 52z' stroke='#5eead4' stroke-width='1.6' opacity='.95'/>
+                <path d='M82 40h72' stroke='#5eead4' stroke-width='1.1' opacity='.7'/>
+                <path d='M60 92v-16h30v16M118 92v-16h30v16' stroke='#7c9cff' stroke-width='1' opacity='.55'/>
+                <g stroke='#5eead4' stroke-width='.9' opacity='.65' stroke-dasharray='6 5'>
+                  <path d='M62 78c26 6 34 14 58 14'/><path d='M78 66c24 8 30 24 42 26'/>
+                  <path d='M158 78c-26 6-30 14-46 14'/>
+                </g>
+                <path d='M28 92h184' stroke='#c084fc' stroke-width='1.2' opacity='.8'/>
+                <g fill='#a9f5e6' font-family='ui-monospace,monospace' font-size='7' opacity='.8'>
+                  <text x='112' y='30'>DAM</text>
+                </g>
+              </svg>
+            </div>
+            <div class='kicker mono' style='color:#9fb0c6'>GRADUATION PROJECT · 2026</div>
+            <h3>土石坝渗流数值模拟</h3>
+            <p>毕业设计课题：土石坝渗流场数值模拟分析。</p>
+            <div class='chips'><span class='chip'>数值模拟</span><span class='chip'>渗流分析</span></div>
+          </div>
+        </article>
+      </div>
     </div>
   </section>
 
-  <section id="skills" class="block rv">
-    <div class="sec-head">
-      <span class="sec-no mono">03</span><h2>技能</h2><span class="sec-en mono">SKILLS</span>
-    </div>
-    <div class="skill-group">
-      <h4>专业软件<span class="en">SOFTWARE</span></h4>
-      <div><span class="chip">AutoCAD</span><span class="chip">Revit</span><span class="chip">广联达</span><span class="chip">PKPM</span></div>
-    </div>
-    <div class="skill-group">
-      <h4>编程<span class="en">CODING</span></h4>
-      <div><span class="chip">Python（ezdxf 参数化出图）</span></div>
-    </div>
-    <div class="skill-group">
-      <h4>证书<span class="en">CERTIFICATES</span></h4>
-      <div><span class="chip">CET-4</span><span class="chip">计算机二级</span><span class="chip">普通话二甲</span></div>
+  <section id='skills' class='sec'>
+    <div class='wrap'>
+      <div class='sec-head rv'>
+        <span class='num mono'>02</span>
+        <h2>技能</h2>
+        <span class='en mono'>Skills</span>
+      </div>
+      <div class='skill-grid'>
+        <div class='card rv' style='--d:1'>
+          <div class='inner'>
+            <div class='mini-k mono'>SOFTWARE</div>
+            <h4>专业软件</h4>
+            <div class='chips'>
+              <span class='chip'>AutoCAD</span><span class='chip'>Revit</span>
+              <span class='chip'>广联达</span><span class='chip'>PKPM</span>
+            </div>
+          </div>
+        </div>
+        <div class='card rv' style='--d:2'>
+          <div class='inner'>
+            <div class='mini-k mono'>CODING</div>
+            <h4>编程</h4>
+            <div class='chips'>
+              <span class='chip'>Python</span><span class='chip'>ezdxf 参数化出图</span>
+            </div>
+          </div>
+        </div>
+        <div class='card rv' style='--d:3'>
+          <div class='inner'>
+            <div class='mini-k mono'>CERTIFICATES</div>
+            <h4>证书</h4>
+            <div class='chips'>
+              <span class='chip'>CET-4</span><span class='chip'>计算机二级</span><span class='chip'>普通话二甲</span>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 
-  <section id="education" class="block rv">
-    <div class="sec-head">
-      <span class="sec-no mono">04</span><h2>教育</h2><span class="sec-en mono">EDUCATION</span>
-    </div>
-    <div class="edu-item">
-      <span class="school">河南工程学院</span>
-      <span class="detail">土木工程（装配式建筑方向）· 本科 · 2027 届</span>
+  <section id='education' class='sec'>
+    <div class='wrap'>
+      <div class='sec-head rv'>
+        <span class='num mono'>03</span>
+        <h2>教育</h2>
+        <span class='en mono'>Education</span>
+      </div>
+      <div class='card edu rv'>
+        <div class='inner edu-main'>
+          <span class='edu-school'>河南工程学院</span>
+          <span class='edu-detail'>土木工程（装配式建筑方向）· 本科 · 2027 届</span>
+        </div>
+        <span class='edu-time mono'>2023 — 2027</span>
+      </div>
     </div>
   </section>
 
-  <section id="contact" class="block rv">
-    <div class="sec-head">
-      <span class="sec-no mono">05</span><h2>联系方式</h2><span class="sec-en mono">CONTACT</span>
+  <section id='contact' class='sec'>
+    <div class='wrap'>
+      <div class='sec-head rv'>
+        <span class='num mono'>04</span>
+        <h2>联系方式</h2>
+        <span class='en mono'>Contact</span>
+      </div>
+      <div class='card contact-card rv'>
+        <div class='inner'>
+          <h3>聊聊机会，或者聊聊图纸</h3>
+          <div class='sub'>2027 届秋招 / 实习 / 项目合作，欢迎随时邮件找我。</div>
+          <div class='mail-row'>
+            <span class='addr'>z1ka@qq.com</span>
+            <button class='copy' type='button' data-mail='z1ka@qq.com'>复制</button>
+          </div>
+        </div>
+      </div>
     </div>
-    <p class="contact-line"><b>邮箱：</b>z1ka@qq.com</p>
-    
   </section>
 
-  <footer class="rv">
-    <table class="tb">
-      <tr><td class="k">图名</td><td>个人作品集 PORTFOLIO</td><td class="k">比例</td><td>1:1</td></tr>
-      <tr><td class="k">制图</td><td>张明正</td><td class="k">日期</td><td>2026-11</td></tr>
-      <tr><td class="k">院校</td><td colspan="3">河南工程学院 · 土木工程（装配式建筑方向）</td></tr>
-    </table>
-    <div class="foot-note mono">DRAWN FOR 2027 秋招</div>
-  </footer>
+</main>
 
-</div>
+<footer>
+  <div class='wrap foot-in'>
+    <div>© 2026 张明正 <span class='acct'>·</span> 河南工程学院</div>
+    <div>DRAWN FOR 2027 秋招 <span class='acct'>/</span> 装配式建筑方向</div>
+  </div>
+</footer>
 
 <script>
-const io = new IntersectionObserver(es => es.forEach(e => {
-  if (e.isIntersecting) { e.target.classList.add('on'); io.unobserve(e.target); }
-}), {threshold: .1});
-document.querySelectorAll('.rv').forEach(el => io.observe(el));
+(function(){
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // scroll progress
+  var bar = document.querySelector('.progress i');
+  function onScroll(){
+    var h = document.documentElement;
+    var max = h.scrollHeight - h.clientHeight;
+    var p = max > 0 ? h.scrollTop / max : 0;
+    bar.style.transform = 'scaleX(' + p + ')';
+  }
+  window.addEventListener('scroll', onScroll, {passive:true});
+  onScroll();
+
+  // reveal
+  var rv = document.querySelectorAll('.rv');
+  if ('IntersectionObserver' in window && !reduce){
+    var io = new IntersectionObserver(function(es){
+      es.forEach(function(e){
+        if (e.isIntersecting){ e.target.classList.add('on'); io.unobserve(e.target); }
+      });
+    }, {threshold:.12, rootMargin:'0px 0px -8% 0px'});
+    rv.forEach(function(el){ io.observe(el); });
+  } else {
+    rv.forEach(function(el){ el.classList.add('on'); });
+  }
+
+  // active nav
+  var links = Array.prototype.slice.call(document.querySelectorAll('.links a'));
+  var secs = links.map(function(a){ return document.querySelector(a.getAttribute('href')); });
+  if ('IntersectionObserver' in window){
+    var io2 = new IntersectionObserver(function(es){
+      es.forEach(function(e){
+        if (e.isIntersecting){
+          links.forEach(function(l){ l.classList.remove('on'); });
+          var i = secs.indexOf(e.target);
+          if (i > -1) links[i].classList.add('on');
+        }
+      });
+    }, {threshold:.28});
+    secs.forEach(function(s){ if (s) io2.observe(s); });
+  }
+
+  // cursor glow
+  var glow = document.querySelector('.cursor-glow');
+  if (!reduce && glow && window.matchMedia('(hover:hover)').matches){
+    var gx = innerWidth/2, gy = innerHeight/4, cx = gx, cy = gy;
+    document.addEventListener('mousemove', function(e){ gx = e.clientX; gy = e.clientY; }, {passive:true});
+    (function loop(){
+      cx += (gx - cx) * .09; cy += (gy - cy) * .09;
+      glow.style.left = cx + 'px'; glow.style.top = cy + 'px';
+      requestAnimationFrame(loop);
+    })();
+  }
+
+  // card spotlight
+  document.querySelectorAll('.card').forEach(function(card){
+    card.addEventListener('mousemove', function(e){
+      var r = card.getBoundingClientRect();
+      card.style.setProperty('--mx', (e.clientX - r.left) + 'px');
+      card.style.setProperty('--my', (e.clientY - r.top) + 'px');
+    });
+  });
+
+  // copy email
+  var btn = document.querySelector('.copy');
+  if (btn){
+    btn.addEventListener('click', function(){
+      var mail = btn.getAttribute('data-mail');
+      var done = function(){
+        btn.textContent = '已复制';
+        btn.classList.add('done');
+        setTimeout(function(){ btn.textContent = '复制'; btn.classList.remove('done'); }, 1800);
+      };
+      if (navigator.clipboard && navigator.clipboard.writeText){
+        navigator.clipboard.writeText(mail).then(done).catch(function(){ fallback(mail, done); });
+      } else { fallback(mail, done); }
+    });
+  }
+  function fallback(text, cb){
+    var ta = document.createElement('textarea');
+    ta.value = text; ta.style.position = 'fixed'; ta.style.opacity = '0';
+    document.body.appendChild(ta); ta.select();
+    try { document.execCommand('copy'); cb(); } catch(e){}
+    document.body.removeChild(ta);
+  }
+})();
 </script>
 </body>
 </html>
