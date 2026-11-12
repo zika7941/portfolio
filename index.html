@@ -4,377 +4,220 @@
 <meta charset='UTF-8'>
 <meta name='viewport' content='width=device-width,initial-scale=1'>
 <meta name='description' content='张明正 · 河南工程学院 土木工程（装配式建筑方向）· 用 AI 给 CAD 提效'>
-<meta name='theme-color' content='#05070d'>
+<meta name='theme-color' content='#f6f4f1'>
 <title>张明正 · Portfolio</title>
 <style>
 :root{
-  --bg:#05070d;
-  --txt:#eaf0f8;
-  --dim:#8a97ad;
-  --dim2:#5f6b80;
-  --stroke:rgba(255,255,255,.085);
-  --stroke2:rgba(255,255,255,.16);
-  --card:rgba(255,255,255,.028);
-  --acc:#5eead4;
-  --acc2:#7c9cff;
-  --acc3:#c084fc;
+  --paper:#f6f4f1;
+  --paper2:#efece6;
+  --ink:#14161a;
+  --ink2:#3a3f47;
+  --mute:#7f848b;
+  --mute2:#9a9ea5;
+  --line:#dbd7cf;
+  --line2:#c8c3b9;
+  --dark:#101215;
+  --dark2:#191c20;
+  --warm:#e9b25e;
+  --rose:#e0a3b4;
+  --dot:#d9433a;
+  --grad:linear-gradient(100deg,#f0cfa0 0%,#e8a9b6 55%,#c9a2d6 100%);
+  --sans:'PingFang SC','Hiragino Sans GB','Microsoft YaHei',-apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif;
   --mono:ui-monospace,SFMono-Regular,Menlo,Consolas,'Courier New',monospace;
-  --sans:-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Hiragino Sans GB','Microsoft YaHei',system-ui,sans-serif;
   --ease:cubic-bezier(.22,1,.36,1);
-  --maxw:1080px;
+  --maxw:1180px;
 }
 *{margin:0;padding:0;box-sizing:border-box}
-html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
-body{
-  background:var(--bg);color:var(--txt);font-family:var(--sans);
-  line-height:1.72;-webkit-font-smoothing:antialiased;overflow-x:hidden;
-}
-::selection{background:rgba(94,234,212,.24);color:#fff}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+body{background:var(--paper);color:var(--ink);font-family:var(--sans);line-height:1.7;
+  -webkit-font-smoothing:antialiased;overflow-x:hidden}
+::selection{background:#f3d3ae;color:var(--ink)}
 a{color:inherit;text-decoration:none}
+img,svg{display:block;max-width:100%}
 .mono{font-family:var(--mono);font-variant-numeric:tabular-nums}
-
-/* ---------- ambient ---------- */
-.progress{position:fixed;top:0;left:0;right:0;height:2px;z-index:80;background:transparent}
-.progress i{display:block;height:100%;width:100%;transform:scaleX(0);transform-origin:0 50%;
-  background:linear-gradient(90deg,var(--acc),var(--acc2) 55%,var(--acc3));transition:transform .1s linear}
-.aurora{position:fixed;inset:-25% -10%;z-index:-3;pointer-events:none;filter:blur(90px);opacity:.55}
-.aurora span{position:absolute;border-radius:50%;display:block;will-change:transform}
-.aurora .b1{width:46vw;height:46vw;left:-6vw;top:2vh;background:radial-gradient(circle at 50% 50%,rgba(94,234,212,.55),transparent 68%);animation:drift1 26s ease-in-out infinite}
-.aurora .b2{width:52vw;height:52vw;right:-10vw;top:-6vh;background:radial-gradient(circle at 50% 50%,rgba(124,156,255,.5),transparent 68%);animation:drift2 32s ease-in-out infinite}
-.aurora .b3{width:40vw;height:40vw;left:32vw;bottom:-14vh;background:radial-gradient(circle at 50% 50%,rgba(192,132,252,.34),transparent 70%);animation:drift3 38s ease-in-out infinite}
-@keyframes drift1{50%{transform:translate3d(6vw,4vh,0) scale(1.12)}}
-@keyframes drift2{50%{transform:translate3d(-7vw,6vh,0) scale(1.08)}}
-@keyframes drift3{50%{transform:translate3d(4vw,-6vh,0) scale(1.15)}}
-.dots{position:fixed;inset:0;z-index:-2;pointer-events:none;
-  background-image:radial-gradient(rgba(255,255,255,.085) 1px,transparent 1px);
-  background-size:26px 26px;
-  -webkit-mask-image:radial-gradient(120% 90% at 50% 12%,#000 0%,#000 45%,transparent 88%);
-  mask-image:radial-gradient(120% 90% at 50% 12%,#000 0%,#000 45%,transparent 88%)}
-.cursor-glow{position:fixed;width:420px;height:420px;left:0;top:0;z-index:-1;pointer-events:none;
-  background:radial-gradient(circle,rgba(94,234,212,.10),transparent 62%);
-  transform:translate3d(-50%,-50%,0);will-change:left,top}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 40px}
 
 /* ---------- nav ---------- */
-.nav{position:fixed;top:0;left:0;right:0;z-index:60;
-  background:rgba(5,7,13,.62);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);
-  border-bottom:1px solid var(--stroke)}
-.nav-in{max-width:var(--maxw);margin:0 auto;padding:0 24px;height:64px;
-  display:flex;align-items:center;justify-content:space-between;gap:16px}
-.brand{display:inline-flex;align-items:center;gap:9px;font-family:var(--mono);
-  font-size:12px;letter-spacing:.2em;color:var(--txt)}
-.brand i{width:7px;height:7px;border-radius:2px;background:var(--acc);
-  box-shadow:0 0 12px rgba(94,234,212,.9);display:block}
-.brand span{color:var(--dim2);letter-spacing:.14em}
-.links{display:flex;gap:4px}
-.links a{position:relative;font-size:13.5px;color:var(--dim);padding:8px 13px;border-radius:8px;
-  transition:color .25s,background .25s}
-.links a:hover{color:var(--txt);background:rgba(255,255,255,.05)}
-.links a.on{color:var(--txt)}
-.links a.on::after{content:'';position:absolute;left:13px;right:13px;bottom:3px;height:1.5px;
-  background:linear-gradient(90deg,var(--acc),var(--acc2));border-radius:2px}
-
-/* ---------- layout ---------- */
-.wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px}
-.sec{padding:96px 0 12px}
-.sec-head{display:flex;align-items:baseline;gap:14px;margin-bottom:34px;flex-wrap:wrap}
-.sec-head .num{font-size:12px;letter-spacing:.18em;color:var(--acc)}
-.sec-head h2{font-size:clamp(24px,3.4vw,34px);font-weight:650;letter-spacing:-.01em;line-height:1.2}
-.sec-head .en{font-size:11px;letter-spacing:.32em;color:var(--dim2);margin-left:auto;text-transform:uppercase}
+.nav{position:fixed;top:0;left:0;right:0;z-index:60;transition:background .4s,border-color .4s,backdrop-filter .4s;
+  border-bottom:1px solid transparent}
+.nav.solid{background:rgba(246,244,241,.92);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+  border-bottom-color:var(--line)}
+.nav-in{max-width:var(--maxw);margin:0 auto;padding:0 40px;height:66px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+.brand{display:inline-flex;align-items:center;gap:9px;font-size:11px;letter-spacing:.24em;color:#fff;
+  transition:color .4s}
+.nav.solid .brand{color:var(--ink)}
+.brand i{width:6px;height:6px;border-radius:50%;background:var(--dot);display:block}
+.brand span{color:rgba(255,255,255,.55);letter-spacing:.16em;transition:color .4s}
+.nav.solid .brand span{color:var(--mute)}
+.links{display:flex;gap:2px}
+.links a{font-size:12.5px;letter-spacing:.06em;color:rgba(255,255,255,.62);padding:8px 12px;
+  transition:color .3s}
+.links a:hover,.links a.on{color:#fff}
+.nav.solid .links a{color:var(--mute)}
+.nav.solid .links a:hover,.nav.solid .links a.on{color:var(--ink)}
 
 /* ---------- hero ---------- */
-.hero{min-height:100svh;display:flex;align-items:center;padding:120px 0 90px;position:relative}
-.eyebrow{display:inline-flex;align-items:center;gap:10px;padding:7px 15px;border-radius:999px;
-  border:1px solid var(--stroke2);background:rgba(255,255,255,.035);font-size:12.5px;
-  color:#b9c6d8;letter-spacing:.02em;backdrop-filter:blur(8px)}
-.eyebrow .dot{width:6px;height:6px;border-radius:50%;background:var(--acc);display:block;
-  box-shadow:0 0 0 0 rgba(94,234,212,.7);animation:pulse 2.6s infinite}
-@keyframes pulse{70%{box-shadow:0 0 0 9px rgba(94,234,212,0)}100%{box-shadow:0 0 0 0 rgba(94,234,212,0)}}
-.hero h1{margin-top:30px;font-size:clamp(56px,11.5vw,132px);line-height:.94;font-weight:700;
-  letter-spacing:-.035em;
-  background:linear-gradient(160deg,#ffffff 8%,#cfe9e6 42%,#8ea6d8 78%,#9b8bd0 100%);
-  -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
-.name-en{margin-top:20px;font-size:12px;letter-spacing:.52em;color:var(--dim2);text-indent:.52em}
-.tagline{margin-top:26px;font-size:clamp(16.5px,2.1vw,21px);color:#c3cfdf;max-width:640px;line-height:1.75}
-.tagline b{font-weight:650;
-  background:linear-gradient(100deg,var(--acc),var(--acc2));
-  -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
-.actions{display:flex;gap:13px;margin-top:42px;flex-wrap:wrap}
-.btn{display:inline-flex;align-items:center;gap:9px;padding:14px 28px;border-radius:999px;
-  font-size:14.5px;font-weight:550;letter-spacing:.01em;transition:transform .3s var(--ease),box-shadow .3s,background .3s,border-color .3s}
-.btn .arw{transition:transform .3s var(--ease);font-family:var(--mono)}
-.btn.primary{color:#03191c;background:linear-gradient(135deg,var(--acc),var(--acc2));
-  box-shadow:0 10px 34px -10px rgba(94,234,212,.6),0 0 0 1px rgba(255,255,255,.12) inset}
-.btn.primary{transform:translate3d(var(--mx2,0px),var(--my2,0px),0)}
-.btn.primary:hover{transform:translate3d(var(--mx2,0px),calc(var(--my2,0px) - 2px),0);box-shadow:0 16px 44px -10px rgba(94,234,212,.75)}
-.btn.primary:hover .arw{transform:translateX(4px)}
-.btn.ghost{border:1px solid var(--stroke2);color:#d8e2f0;background:rgba(255,255,255,.03)}
-.btn.ghost:hover{transform:translateY(-2px);background:rgba(255,255,255,.075);border-color:rgba(255,255,255,.28)}
-.scroll-hint{position:absolute;left:24px;bottom:34px;display:flex;align-items:center;gap:12px;
-  font-family:var(--mono);font-size:10.5px;letter-spacing:.34em;color:var(--dim2)}
-.scroll-hint .line{width:52px;height:1px;background:linear-gradient(90deg,var(--acc),transparent);
-  position:relative;overflow:hidden}
-.scroll-hint .line::after{content:'';position:absolute;inset:0;background:var(--acc);
-  animation:sweep 2.4s ease-in-out infinite}
-@keyframes sweep{0%{transform:translateX(-100%)}60%,100%{transform:translateX(100%)}}
+.hero{position:relative;min-height:100svh;background:var(--dark);color:#fff;overflow:hidden;
+  display:flex;flex-direction:column;justify-content:flex-end;
+  padding:110px 0 env(safe-area-inset-bottom,0px)}
+.hero-bg{position:absolute;inset:-6% -4%;opacity:.64;
+  -webkit-mask-image:radial-gradient(120% 100% at 50% 45%,#000 0%,#000 42%,transparent 82%);
+  mask-image:radial-gradient(120% 100% at 50% 45%,#000 0%,#000 42%,transparent 82%)}
+.hero-bg svg{width:100%;height:100%}
+.hero-in{position:relative;max-width:var(--maxw);margin:0 auto;padding:0 40px;width:100%;
+  flex:1;display:flex;flex-direction:column;justify-content:space-between}
+.hero-top{display:flex;justify-content:space-between;gap:16px;font-size:10.5px;letter-spacing:.34em;
+  color:rgba(255,255,255,.5);margin-bottom:26px}
+.hero-top .issue{color:rgba(255,255,255,.32)}
+.hero-title{display:block;position:relative}
+.hero-title .l1{display:block;font-size:clamp(30px,4.6vw,58px);font-weight:600;letter-spacing:-.02em;line-height:1.16}
+.hero-title .l2{display:block;font-size:clamp(70px,12.6vw,172px);font-weight:800;letter-spacing:-.05em;
+  line-height:.9;margin-top:6px}
+.hero-title .l2 em{font-style:normal;background:var(--grad);-webkit-background-clip:text;background-clip:text;
+  -webkit-text-fill-color:transparent}
+.hero-title .l3{position:absolute;right:0;top:6px;writing-mode:vertical-rl;font-size:11px;
+  letter-spacing:.36em;color:rgba(255,255,255,.55)}
+.hero-foot{position:relative;margin-top:clamp(36px,7vh,88px);padding-bottom:26px;
+  display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap}
+.scrollhint{display:inline-flex;align-items:center;gap:10px;font-size:10px;letter-spacing:.3em;
+  color:rgba(255,255,255,.42);height:38px;line-height:1}
+.scrollhint .ar{width:38px;height:1px;background:linear-gradient(90deg,rgba(255,255,255,.55),transparent)}
+.pill{display:inline-flex;align-items:center;gap:16px;border:1px solid rgba(255,255,255,.22);border-radius:999px;
+  padding:10px 20px;font-size:11px;letter-spacing:.16em;color:rgba(255,255,255,.8);backdrop-filter:blur(6px)}
+.pill i{width:6px;height:6px;border-radius:50%;background:var(--dot);display:block;flex:0 0 auto}
+.pill .sep{width:1px;height:11px;background:rgba(255,255,255,.22)}
+.pill .en{color:rgba(255,255,255,.45)}
 
-/* ---------- cards ---------- */
-.card{position:relative;border:1px solid var(--stroke);border-radius:20px;overflow:hidden;
-  background:linear-gradient(180deg,rgba(255,255,255,.052),rgba(255,255,255,.014));
-  backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
-  transition:border-color .35s,transform .35s var(--ease),box-shadow .35s}
-.card::before{content:'';position:absolute;inset:0;pointer-events:none;opacity:0;transition:opacity .4s;
-  background:radial-gradient(360px circle at var(--mx,50%) var(--my,0%),rgba(94,234,212,.13),transparent 62%)}
-.card:hover{border-color:rgba(255,255,255,.2);transform:translateY(-3px);
-  box-shadow:0 26px 60px -34px rgba(0,0,0,.9)}
-.card:hover::before{opacity:1}
-.card .inner{position:relative;z-index:1}
+/* ---------- band (about) ---------- */
+.band{background:var(--paper);border-bottom:1px solid var(--line)}
+.band-in{display:grid;grid-template-columns:1.1fr .9fr;gap:56px;padding:64px 40px}
+.k{font-size:10px;letter-spacing:.3em;color:var(--mute2);margin-bottom:18px}
+.band h2{font-size:clamp(20px,2.3vw,28px);font-weight:600;letter-spacing:-.01em;line-height:1.5}
+.band p{font-size:14.5px;color:var(--ink2);line-height:1.9;max-width:44ch;text-wrap:pretty}
+.facts{list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:16px 28px;margin-top:26px;
+  border-top:1px solid var(--line);padding-top:22px}
+.facts b{display:block;font-family:var(--mono);font-size:19px;font-weight:600;color:var(--ink);line-height:1.2}
+.facts span{font-size:12.5px;color:var(--mute);letter-spacing:.02em}
 
-.feat{display:grid;grid-template-columns:1.06fr .94fr;gap:0;margin-bottom:18px}
-.feat .feat-body{padding:34px 34px 34px 36px}
-.kicker{font-size:10.5px;letter-spacing:.26em;color:var(--acc);margin-bottom:14px}
-.feat h3{font-size:clamp(21px,2.5vw,26px);font-weight:650;letter-spacing:-.01em}
-.card p{margin-top:12px;font-size:14.8px;color:#a9b6c8;line-height:1.82}
-.card p code{font-family:var(--mono);font-size:.9em;padding:1.5px 6px;border-radius:5px;
-  background:rgba(94,234,212,.1);color:#a9f5e6;border:1px solid rgba(94,234,212,.18)}
-.chips{display:flex;flex-wrap:wrap;gap:7px;margin-top:20px}
-.chip{font-family:var(--mono);font-size:11px;letter-spacing:.05em;padding:5px 11px;border-radius:999px;
-  border:1px solid var(--stroke);color:#9fb0c6;background:rgba(255,255,255,.028);transition:color .3s,border-color .3s}
-.card:hover .chip{color:#c3d2e4;border-color:rgba(255,255,255,.15)}
-.badge-soon{display:inline-flex;align-items:center;gap:8px;margin-top:22px;padding:7px 14px;border-radius:8px;
-  font-size:11px;letter-spacing:.13em;color:#ffd88a;
-  background:rgba(255,207,92,.085);border:1px solid rgba(255,207,92,.22)}
-.badge-soon i{width:5px;height:5px;border-radius:50%;background:#ffcf5c;display:block;
-  animation:pulse2 2s infinite}
-@keyframes pulse2{50%{opacity:.28}}
+/* ---------- section ---------- */
+.sec{padding:96px 0;position:relative}
+.sec-en{position:absolute;top:24px;right:40px;font-size:clamp(46px,8.4vw,116px);font-weight:800;
+  letter-spacing:-.045em;color:#e1dcd2;line-height:.85;pointer-events:none;user-select:none;z-index:0;
+  white-space:nowrap}
+.sec .wrap{position:relative;z-index:1}
+.sec-head{display:flex;align-items:baseline;gap:14px;margin-bottom:12px}
+.sec-head .num{font-size:11px;letter-spacing:.28em;color:var(--dot)}
+.sec-head h2{font-size:clamp(20px,2.4vw,27px);font-weight:600;letter-spacing:-.01em}
+.rule{height:1px;background:var(--line2);margin:22px 0 40px}
 
-.feat-art{position:relative;border-left:1px solid var(--stroke);display:flex;align-items:center;
-  justify-content:center;padding:26px;min-height:280px;overflow:hidden;
-  background:radial-gradient(120% 100% at 80% 10%,rgba(94,234,212,.09),transparent 58%),
-             radial-gradient(90% 90% at 10% 90%,rgba(124,156,255,.1),transparent 60%)}
-.feat-art::after{content:'';position:absolute;inset:0;pointer-events:none;
-  background-image:linear-gradient(rgba(255,255,255,.045) 1px,transparent 1px),
-                   linear-gradient(90deg,rgba(255,255,255,.045) 1px,transparent 1px);
-  background-size:22px 22px;
-  -webkit-mask-image:radial-gradient(70% 70% at 50% 50%,#000,transparent 92%);
-  mask-image:radial-gradient(70% 70% at 50% 50%,#000,transparent 92%)}
-.feat-art svg{position:relative;z-index:1;width:100%;max-width:340px;height:auto}
-
-.grid2{display:grid;grid-template-columns:1fr 1fr;gap:18px}
-.grid2 .inner{padding:28px 28px 30px}
-.grid2 h3{font-size:19px;font-weight:640;letter-spacing:-.005em}
-.art-sm{position:relative;height:132px;margin:-28px -28px 22px;border-bottom:1px solid var(--stroke);
-  display:flex;align-items:center;justify-content:center;overflow:hidden;
-  background:radial-gradient(110% 120% at 50% 0%,rgba(124,156,255,.1),transparent 62%)}
-.art-sm svg{width:78%;max-width:230px;height:auto;opacity:.9}
+/* ---------- work ---------- */
+.work{display:grid;gap:26px}
+.work-lg{grid-template-columns:1.25fr .75fr;align-items:start;gap:40px;margin-bottom:56px}
+.work-row{display:grid;grid-template-columns:1fr 1fr;gap:40px}
+.work-fig{background:#fff;border:1px solid var(--line);aspect-ratio:16/10;display:flex;align-items:center;
+  justify-content:center;padding:18px;transition:border-color .4s,transform .5s var(--ease)}
+.work:hover .work-fig{border-color:var(--line2)}
+.work-fig svg{width:100%;height:auto;max-height:100%}
+.work-row .work-fig{aspect-ratio:4/3;padding:14px}
+.work h3{font-size:clamp(18px,1.9vw,22px);font-weight:650;letter-spacing:-.01em;margin:14px 0 0}
+.work h3 em{font-style:normal;color:var(--mute)}
+.work .desc{font-size:13.5px;color:var(--ink2);line-height:1.85;margin-top:10px}
+.work .desc code{font-family:var(--mono);font-size:.92em;color:var(--ink);background:#efeae1;padding:1px 5px;border-radius:3px}
+.spec{margin-top:20px;border-top:1px solid var(--line)}
+.spec>div{display:flex;justify-content:space-between;gap:14px;padding:8px 0;border-bottom:1px solid var(--line)}
+.spec dt{font-size:9.5px;letter-spacing:.22em;color:var(--mute2);font-family:var(--mono);padding-top:3px}
+.spec dd{font-size:12.5px;color:var(--ink2);text-align:right}
+.soon{display:inline-block;margin-top:18px;font-size:10px;letter-spacing:.16em;color:#8a6a2f;
+  border:1px solid #e3cfae;background:#f7efdf;border-radius:999px;padding:5px 12px}
 
 /* ---------- skills ---------- */
-.skill-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
-.skill-grid .inner{padding:26px 24px 28px}
-.mini-k{font-size:10.5px;letter-spacing:.28em;color:var(--dim2);margin-bottom:10px}
-.skill-grid h4{font-size:16px;font-weight:620;margin-bottom:16px}
-.skill-grid .chips{margin-top:0}
+.skill-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:48px}
+.skill h4{font-size:11px;letter-spacing:.24em;color:var(--mute2);font-family:var(--mono);margin-bottom:16px}
+.sk{display:flex;align-items:baseline;justify-content:space-between;gap:12px;padding:11px 0;
+  border-bottom:1px solid var(--line);font-size:13.5px;color:var(--ink2)}
+.sk:first-of-type{border-top:1px solid var(--line2)}
+.sk .lv{font-family:var(--mono);font-size:10px;letter-spacing:.1em;color:var(--mute)}
 
-/* ---------- edu ---------- */
-.edu{position:relative;padding:30px 32px 30px 34px;display:flex;align-items:center;
-  justify-content:space-between;gap:24px;flex-wrap:wrap}
-.edu::before{content:'';position:absolute;left:0;top:22px;bottom:22px;width:2px;border-radius:2px;
-  background:linear-gradient(180deg,var(--acc),var(--acc2),transparent)}
-.edu-main{display:flex;flex-direction:column;gap:6px}
-.edu-school{font-size:clamp(18px,2.2vw,21px);font-weight:640}
-.edu-detail{font-size:14px;color:var(--dim)}
-.edu-time{font-family:var(--mono);font-size:11.5px;letter-spacing:.2em;color:var(--acc);
-  padding:6px 13px;border-radius:999px;border:1px solid rgba(94,234,212,.24);background:rgba(94,234,212,.07)}
+/* ---------- timeline ---------- */
+.tl{border-top:1px solid var(--line2)}
+.tl-item{display:grid;grid-template-columns:110px 1fr;gap:28px;padding:20px 0;border-bottom:1px solid var(--line);
+  align-items:baseline}
+.tl-y{font-family:var(--mono);font-size:13px;letter-spacing:.14em;color:var(--dot)}
+.tl-b{font-size:14.5px;color:var(--ink2)}
+.tl-b b{color:var(--ink);font-weight:650;margin-right:10px}
 
 /* ---------- contact ---------- */
-.contact-card{padding:52px 36px;text-align:center;
-  background:radial-gradient(90% 130% at 50% 0%,rgba(94,234,212,.10),transparent 62%),
-             linear-gradient(180deg,rgba(255,255,255,.05),rgba(255,255,255,.012))}
-.contact-card h3{font-size:clamp(22px,3.2vw,30px);font-weight:650;letter-spacing:-.015em}
-.contact-card .sub{margin-top:10px;font-size:14.5px;color:var(--dim)}
-.mail-row{display:inline-flex;align-items:center;gap:12px;margin-top:28px;padding:12px 14px 12px 22px;
-  border-radius:999px;border:1px solid var(--stroke2);background:rgba(255,255,255,.04);
-  transition:border-color .3s,background .3s}
-.mail-row:hover{border-color:rgba(94,234,212,.4);background:rgba(94,234,212,.06)}
-.mail-row .addr{font-family:var(--mono);font-size:14.5px;letter-spacing:.02em;color:#e6eefb}
-.copy{font-family:var(--mono);font-size:11px;letter-spacing:.12em;padding:7px 14px;border-radius:999px;
-  border:1px solid var(--stroke2);color:var(--dim);background:rgba(255,255,255,.04);cursor:pointer;
-  transition:all .25s}
-.copy:hover{color:var(--acc);border-color:rgba(94,234,212,.45);background:rgba(94,234,212,.1)}
-.copy.done{color:#03191c;background:linear-gradient(135deg,var(--acc),var(--acc2));border-color:transparent}
+.contact{background:var(--dark);color:#fff;position:relative;overflow:hidden;padding:110px 0 96px}
+.contact-bg{position:absolute;inset:-10%;opacity:.22;
+  -webkit-mask-image:radial-gradient(100% 90% at 70% 40%,#000,transparent 78%);
+  mask-image:radial-gradient(100% 90% at 70% 40%,#000,transparent 78%)}
+.contact-in{position:relative;max-width:var(--maxw);margin:0 auto;padding:0 40px;
+  display:grid;grid-template-columns:1fr .8fr;gap:56px;align-items:center}
+.contact h2{font-size:clamp(58px,11vw,150px);font-weight:800;letter-spacing:-.05em;line-height:.86;
+  color:rgba(255,255,255,.22)}
+.contact h2 em{font-style:normal;color:rgba(255,255,255,.92)}
+.clist{list-style:none;display:grid;gap:26px}
+.clist li{display:flex;gap:16px;align-items:flex-start}
+.cico{width:34px;height:34px;border-radius:50%;background:var(--grad);flex:0 0 auto;
+  display:flex;align-items:center;justify-content:center;margin-top:2px}
+.cico svg{width:15px;height:15px;stroke:#241a10;fill:none;stroke-width:1.6}
+.clist .lb{font-size:10.5px;letter-spacing:.24em;color:rgba(255,255,255,.55);font-family:var(--mono)}
+.clist .vl{font-size:15px;color:rgba(255,255,255,.92);margin-top:5px;letter-spacing:.01em;
+  display:flex;align-items:center;flex-wrap:wrap;gap:10px}
+.clist .vl.mono{font-size:14px;letter-spacing:.04em}
+.copy{font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;color:rgba(255,255,255,.8);
+  background:none;border:1px solid rgba(255,255,255,.38);border-radius:999px;padding:5px 12px;cursor:pointer;
+  transition:all .25s;line-height:1.4}
+.copy:hover{color:#fff;border-color:rgba(255,255,255,.8);background:rgba(255,255,255,.08)}
+.copy.done{background:var(--grad);color:#241a10;border-color:transparent}
 
 /* ---------- footer ---------- */
-footer{margin-top:96px;border-top:1px solid var(--stroke);padding:28px 0 42px}
-.foot-in{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;
-  font-family:var(--mono);font-size:11px;letter-spacing:.14em;color:var(--dim2)}
-.foot-in .acct{color:var(--acc)}
+footer{background:var(--dark);color:rgba(255,255,255,.45);padding:0 0 46px}
+.foot-in{max-width:var(--maxw);margin:0 auto;padding:0 40px;display:flex;justify-content:space-between;
+  align-items:center;gap:18px;flex-wrap:wrap;font-size:10.5px;letter-spacing:.16em;font-family:var(--mono);
+  border-top:1px solid rgba(255,255,255,.1);padding-top:26px}
 
 /* ---------- reveal ---------- */
-.rv{opacity:0;transform:translateY(26px);
-  transition:opacity .85s var(--ease),transform .85s var(--ease);
-  transition-delay:calc(var(--d,0)*85ms)}
+.rv{opacity:0;transform:translateY(20px);transition:opacity .9s var(--ease),transform .9s var(--ease);
+  transition-delay:calc(var(--d,0)*80ms)}
 .rv.on{opacity:1;transform:none}
-
-@media(max-width:900px){
-  .feat{grid-template-columns:1fr}
-  .feat-art{border-left:0;border-top:1px solid var(--stroke);min-height:230px;padding:22px}
-  .skill-grid{grid-template-columns:1fr 1fr}
-}
-@media(max-width:640px){
-  .nav-in{height:58px;padding:0 18px}
-  .brand span{display:none}
-  .links a{padding:7px 9px;font-size:12.5px}
-  .wrap{padding:0 18px}
-  .sec{padding:72px 0 8px}
-  .hero{padding:104px 0 78px;min-height:auto}
-  .hero h1{letter-spacing:-.045em}
-  .name-en{letter-spacing:.36em;text-indent:.36em;font-size:10.5px}
-  .scroll-hint{left:18px;bottom:22px}
-  .grid2{grid-template-columns:1fr}
-  .skill-grid{grid-template-columns:1fr}
-  .feat .feat-body{padding:26px 22px}
-  .grid2 .inner{padding:24px 22px 26px}
-  .art-sm{margin:-24px -22px 20px}
-  .edu{padding:24px 22px}
-  .contact-card{padding:40px 22px}
-  .mail-row{padding:10px 10px 10px 18px}
-  .copy{padding:6px 11px}
-}
-/* ---------- v2: char reveal ---------- */
-.hero h1 .ch{display:inline-block;overflow:hidden;vertical-align:top}
-.hero h1 .ch>i{display:inline-block;font-style:normal;transform:translateY(115%);opacity:0;
-  animation:chIn .95s var(--ease) forwards;animation-delay:calc(var(--i,0)*75ms + 100ms)}
-@keyframes chIn{to{transform:translateY(0);opacity:1}}
-/* 拆字后每字承载渐变的一个切片，保证与原渐变一致 */
-.hero h1.split{background:none}
-.hero h1.split .ch>i{
-  background-image:linear-gradient(160deg,#ffffff 8%,#cfe9e6 42%,#8ea6d8 78%,#9b8bd0 100%);
-  background-repeat:no-repeat;
-  background-size:var(--h1w,600px) var(--h1h,140px);
-  background-position:var(--bx,0px) var(--by,0px);
-  -webkit-background-clip:text;background-clip:text;
-  -webkit-text-fill-color:transparent;color:transparent}
-
-/* ---------- v2: dimension line ---------- */
-.dim{display:flex;align-items:center;margin-top:24px;height:14px}
-.dim-tick{width:1px;height:12px;background:var(--stroke2);flex:0 0 auto;
-  transform:scaleY(0);transform-origin:50% 100%;transition:transform .5s var(--ease) .15s}
-.dim-line{height:1px;flex:0 0 148px;background:linear-gradient(90deg,var(--stroke2),rgba(94,234,212,.55));
-  transform:scaleX(0);transform-origin:0 50%;transition:transform .95s var(--ease) .3s}
-.dim-label{margin-left:14px;font-size:10px;letter-spacing:.32em;color:var(--dim2);
-  opacity:0;transition:opacity .6s ease .85s}
-.dim.on .dim-tick{transform:scaleY(1)}
-.dim.on .dim-line{transform:scaleX(1)}
-.dim.on .dim-label{opacity:1}
-
-/* ---------- v2: svg line drawing ---------- */
-.dlo{stroke-dasharray:var(--len,400);stroke-dashoffset:var(--len,400);
-  transition:stroke-dashoffset 1.15s var(--ease) calc(var(--k,0)*52ms + .12s)}
+.line-grow{transform:scaleX(0);transform-origin:0 50%;transition:transform 1s var(--ease)}
+.line-grow.on{transform:scaleX(1)}
+.dlo{stroke-dasharray:var(--len,600);stroke-dashoffset:var(--len,600);
+  transition:stroke-dashoffset 1.3s var(--ease) calc(var(--k,0)*45ms + .1s)}
 svg[data-draw].on .dlo{stroke-dashoffset:0}
 
-/* ---------- v2: tilt ---------- */
-.card.tilt{transform:perspective(1000px) rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg));
-  transition:border-color .35s,transform .18s var(--ease),box-shadow .35s}
-.card.tilt:hover{transform:perspective(1000px) rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg)) translateY(-3px)}
-
-/* ---------- v2: chip stagger ---------- */
-.card .chip{transition:color .3s,border-color .3s,transform .35s var(--ease)}
-.card:hover .chips .chip{transform:translateY(-1px)}
-.card:hover .chips .chip:nth-child(2){transition-delay:.05s}
-.card:hover .chips .chip:nth-child(3){transition-delay:.1s}
-.card:hover .chips .chip:nth-child(4){transition-delay:.15s}
-
-/* ---------- v2: magnet + focus ---------- */
-.copy{transform:translate3d(var(--mx2,0px),var(--my2,0px),0)}
-a:focus-visible,button:focus-visible{outline:2px solid var(--acc);outline-offset:3px;border-radius:10px}
-
-/* ===== v3b: 作品式首屏 ===== */
-.hB .wrap{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:52px;align-items:center}
-.idrow{display:flex;align-items:baseline;gap:16px;margin-top:26px}
-.idrow .nm{font-size:clamp(25px,3vw,32px);font-weight:660;letter-spacing:-.01em;color:var(--txt)}
-.idrow .nm-en{font-size:10px;letter-spacing:.36em;color:var(--dim2)}
-.hB .claim{margin:16px 0 0;font-size:clamp(31px,4.4vw,51px);line-height:1.2;font-weight:700;letter-spacing:-.025em;
-  background:none;-webkit-background-clip:initial;background-clip:initial;
-  -webkit-text-fill-color:currentColor;color:var(--txt)}
-.hB .claim b{font-weight:700;background:linear-gradient(100deg,var(--acc),var(--acc2));
-  -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
-.hB .tagline{margin-top:20px;max-width:470px;font-size:clamp(15px,1.6vw,17px);line-height:1.85;text-wrap:pretty}
-.hB-art{position:relative;display:flex;align-items:center;justify-content:center;min-height:430px;
-  border:1px solid rgba(255,255,255,.18);border-radius:20px;overflow:hidden;padding:8px;
-  background:linear-gradient(180deg,rgba(255,255,255,.03),rgba(255,255,255,.008)),
-             radial-gradient(120% 100% at 72% 4%,rgba(94,234,212,.13),transparent 62%),
-             radial-gradient(90% 90% at 8% 100%,rgba(124,156,255,.15),transparent 62%)}
-.hB-art::after{content:'';position:absolute;inset:0;pointer-events:none;
-  background-image:linear-gradient(rgba(255,255,255,.045) 1px,transparent 1px),
-                   linear-gradient(90deg,rgba(255,255,255,.045) 1px,transparent 1px);
-  background-size:22px 22px;
-  -webkit-mask-image:radial-gradient(70% 70% at 50% 50%,#000,transparent 92%);
-  mask-image:radial-gradient(70% 70% at 50% 50%,#000,transparent 92%)}
-.hB-art svg{position:relative;z-index:1;width:100%;max-width:520px;height:auto}
-.hB-art svg text{font-size:9.5px}
-.hB-art:hover{border-color:rgba(94,234,212,.32)}
-/* 滚动条与深色主题统一 */
-html{scrollbar-width:thin;scrollbar-color:rgba(255,255,255,.16) transparent}
-::-webkit-scrollbar{width:10px;height:10px}
-::-webkit-scrollbar-track{background:transparent}
-::-webkit-scrollbar-thumb{background:rgba(255,255,255,.14);border-radius:8px;border:2px solid var(--bg)}
-::-webkit-scrollbar-thumb:hover{background:rgba(94,234,212,.4)}
-/* 主按钮光晕收一点，让标题回到第一焦点 */
-.btn.primary{box-shadow:0 10px 30px -12px rgba(94,234,212,.45),0 0 0 1px rgba(255,255,255,.1) inset}
-.btn.primary:hover{box-shadow:0 14px 38px -12px rgba(94,234,212,.6)}
-@media(max-width:900px){
-  .hB .wrap{grid-template-columns:1fr;gap:30px}
-  .hB .claim{font-size:clamp(28px,7vw,40px)}
-  .hB .actions{margin-top:32px}
-  .hB-art{min-height:290px;padding:6px}
+@media(max-width:1000px){
+  .band-in{grid-template-columns:1fr;gap:30px}
+  .work-lg{grid-template-columns:1fr;gap:26px;margin-bottom:44px}
+  .skill-grid{grid-template-columns:1fr;gap:34px}
+  .contact-in{grid-template-columns:1fr;gap:40px}
+  .sec-en{right:24px;top:16px}
 }
-/* ===== v4: 信息密度 ===== */
-.facts{display:flex;flex-wrap:wrap;gap:9px 24px;margin-top:32px;padding-top:22px;border-top:1px solid var(--stroke)}
-.facts span{font-size:12.5px;color:var(--dim);display:inline-flex;align-items:baseline;gap:7px}
-.facts b{font-family:var(--mono);font-size:15px;font-weight:600;color:var(--acc)}
-.meta{display:flex;flex-wrap:wrap;gap:7px 22px;margin-top:18px;padding-top:15px;border-top:1px solid var(--stroke)}
-.meta span{font-size:11px;color:var(--dim);display:inline-flex;gap:7px;align-items:baseline}
-.meta i{font-style:normal;font-size:9px;letter-spacing:.2em;color:var(--dim2)}
-.sk-list{margin-top:4px;border-top:1px solid var(--stroke)}
-.sk-row{display:flex;align-items:center;justify-content:space-between;gap:12px;
-  padding:9px 0;border-bottom:1px solid rgba(255,255,255,.115);font-size:13.5px;color:#c2cee0}
-.sk-row:last-child{border-bottom:0}
-.sk-row .lv{font-size:10px;letter-spacing:.14em;color:var(--acc);padding:2px 8px;border-radius:999px;
-  border:1px solid rgba(94,234,212,.24);background:rgba(94,234,212,.07)}
-.tl{position:relative;padding-left:26px}
-.tl::before{content:'';position:absolute;left:5px;top:14px;bottom:14px;width:1px;
-  background:linear-gradient(180deg,var(--acc),rgba(124,156,255,.5),transparent)}
-.tl-item{position:relative;display:flex;gap:22px;padding:15px 0;border-bottom:1px solid var(--stroke)}
-.tl-item:last-child{border-bottom:0}
-.tl-item::before{content:'';position:absolute;left:-24px;top:23px;width:7px;height:7px;border-radius:2px;
-  background:var(--acc);box-shadow:0 0 12px rgba(94,234,212,.8)}
-.tl-year{flex:0 0 52px;font-size:12px;letter-spacing:.18em;color:var(--acc);padding-top:2px}
-.tl-body{font-size:14.5px;color:#a9b6c8}
-.tl-body b{color:var(--txt);font-weight:640;margin-right:9px}
-.intent{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:26px}
-.intent div{padding:16px 18px;border:1px solid var(--stroke);border-radius:14px;background:rgba(255,255,255,.025)}
-.intent i{display:block;font-style:normal;font-family:var(--mono);font-size:9px;letter-spacing:.22em;
-  color:var(--dim2);margin-bottom:8px}
-.intent span{font-size:13.5px;color:#dbe6f5}
-@media(max-width:900px){ .intent{grid-template-columns:1fr} }
-@media(max-width:640px){ .links a{padding:7px 7px;font-size:12px} }
-
+@media(max-width:640px){
+  .wrap,.nav-in,.hero-in,.contact-in,.foot-in{padding-left:22px;padding-right:22px}
+  .sec{padding:70px 0}
+  .hero{padding-top:96px}
+  .hero-top{font-size:9.5px;letter-spacing:.2em;word-break:keep-all}
+  .hero-top .issue{display:none}
+  .hero-title .l3{display:none}
+  .work-row{grid-template-columns:1fr;gap:34px}
+  .facts{grid-template-columns:1fr 1fr}
+  .tl-item{grid-template-columns:74px 1fr;gap:16px}
+  .sec-en{font-size:46px;top:10px;right:22px;opacity:.85}
+  .pill{font-size:10px;gap:10px;padding:9px 14px}
+  .pill .en{display:none}
+  .links a{padding:7px 8px;font-size:12px}
+}
 @media(prefers-reduced-motion:reduce){
   *,*::before,*::after{animation:none!important;transition:none!important}
   .rv{opacity:1;transform:none}
-  .hero h1 .ch>i{transform:none!important;opacity:1!important}
+  .line-grow{transform:none}
   .dlo{stroke-dasharray:none!important;stroke-dashoffset:0!important}
-  .dim-tick,.dim-line{transform:none!important}
-  .dim-label{opacity:1!important}
-  .card.tilt,.card.tilt:hover{transform:none!important}
 }
 </style>
 </head>
 <body>
-
-<div class='progress'><i></i></div>
-<div class='aurora'><span class='b1'></span><span class='b2'></span><span class='b3'></span></div>
-<div class='dots'></div>
-<div class='cursor-glow'></div>
 
 <header class='nav'>
   <div class='nav-in'>
@@ -383,7 +226,6 @@ html{scrollbar-width:thin;scrollbar-color:rgba(255,255,255,.16) transparent}
       <a href='#projects'>项目</a>
       <a href='#skills'>技能</a>
       <a href='#timeline'>时间线</a>
-      <a href='#education'>教育</a>
       <a href='#contact'>联系</a>
     </nav>
   </div>
@@ -391,276 +233,248 @@ html{scrollbar-width:thin;scrollbar-color:rgba(255,255,255,.16) transparent}
 
 <main id='top'>
 
-  <section class='hero hB'>
-    <div class='wrap'>
-      <div class='hB-main'>
-        <div class='eyebrow rv'><i class='dot'></i>2027 届 · 河南工程学院 · 装配式建筑方向</div>
-        <div class='idrow rv' style='--d:1'><span class='nm'>张明正</span><span class='nm-en mono'>ZHANG MINGZHENG</span></div>
-        <h1 class='claim rv' style='--d:2'>用代码缩短<br>从<b>想法</b>到<b>图纸</b>的距离</h1>
-        <p class='tagline rv' style='--d:3'>土木工程（装配式建筑方向）在读。自然语言描述设计需求，模型生成参数化绘图代码，一键出 DXF。</p>
-        <div class='actions rv' style='--d:4'>
-          <a class='btn primary' href='#projects'>查看项目<span class='arw'>→</span></a>
-          <a class='btn ghost' href='#contact'>联系方式</a>
-        </div>
-        <div class='facts rv' style='--d:5'>
-          <span><b>1</b> 套自建出图工具</span>
-          <span><b>2</b> 项竞赛 / 课题产出</span>
-          <span><b>4</b> 类专业软件</span>
-          <span><b>3</b> 项等级证书</span>
-        </div>
+  <section class='hero'>
+    <div class='hero-bg' aria-hidden='true'>
+      <svg viewBox='0 0 1000 620' fill='none' xmlns='http://www.w3.org/2000/svg' preserveAspectRatio='xMidYMid slice'>
+        <g stroke='#ffffff' stroke-width='1' opacity='.5'>
+          <rect x='60' y='40' width='880' height='540'/>
+          <path d='M60 310h880M420 40v540M700 310v270M200 310v160M420 180h280M540 180v130'/>
+          <rect x='420' y='40' width='280' height='140' stroke-dasharray='6 6'/>
+          <circle cx='560' cy='110' r='46' stroke-dasharray='4 5'/>
+          <path d='M560 60v100M510 110h100'/>
+        </g>
+        <g stroke='#ffffff' stroke-width='.8' opacity='.3'>
+          <path d='M60 580h880'/><path d='M60 572v16'/><path d='M940 572v16'/><path d='M500 572v10'/>
+        </g>
+        <g fill='#ffffff' font-family='ui-monospace,monospace' font-size='8' opacity='.45'>
+          <text x='90' y='200'>LIVING</text>
+          <text x='740' y='200'>BEDROOM</text>
+        </g>
+      </svg>
+    </div>
+    <div class='hero-in'>
+      <div class='hero-top mono'>
+        <span>PORTFOLIO — 2027 届 · 河南工程学院 · 装配式建筑方向</span>
+        <span class='issue'>VOL.01 / 2027</span>
       </div>
-      <div class='hB-art rv' style='--d:2'>
-        <svg data-draw viewBox='0 0 320 230' fill='none' xmlns='http://www.w3.org/2000/svg' aria-hidden='true'>
-          <g stroke='#5eead4' stroke-width='1.1' opacity='.5'>
-            <path d='M30 210V30h260' stroke-dasharray='3 5'/>
-            <path d='M30 210h260' stroke-dasharray='3 5'/>
-          </g>
-          <rect x='42' y='42' width='236' height='150' stroke='#5eead4' stroke-width='1.6' opacity='.95'/>
-          <path d='M42 122h96M138 42v150M138 122h140M208 122v70' stroke='#5eead4' stroke-width='1.3' opacity='.8'/>
-          <rect x='138' y='42' width='70' height='80' stroke='#7c9cff' stroke-width='1.1' stroke-dasharray='5 4' opacity='.85'/>
-          <circle cx='173' cy='82' r='13' stroke='#7c9cff' stroke-width='1' opacity='.6'/>
-          <path d='M173 69v-9M173 95v9M160 82h-9M186 82h9' stroke='#7c9cff' stroke-width='1' opacity='.55'/>
-          <g stroke='#5eead4' stroke-width='1' opacity='.55'>
-            <path d='M42 205h236'/><path d='M42 200v10'/><path d='M278 200v10'/>
-            <path d='M162 200v-6'/>
-          </g>
-          <g fill='#a9f5e6' font-family='ui-monospace,monospace' font-size='8' opacity='.9'>
-            <text x='62' y='86'>LIVING</text>
-            <text x='150' y='150'>BATH</text>
-            <text x='222' y='100'>BEDROOM</text>
-            <text x='150' y='196' text-anchor='middle'>24800</text>
-          </g>
-        </svg>
+      <div class='hero-bottom'>
+        <h1 class='hero-title'>
+          <span class='l1 rv'>把重复的绘图</span>
+          <span class='l2 rv' style='--d:1'>交给<em>代码</em></span>
+          <span class='l3 mono'>把判断力<br>留给自己</span>
+        </h1>
+        <div class='hero-foot rv' style='--d:2'>
+          <div class='pill'>
+            <i></i>张明正作品集<span class='sep'></span><span class='en'>ZHANG MINGZHENG'S PORTFOLIO</span>
+          </div>
+          <div class='scrollhint mono'>SCROLL<span class='ar'></span></div>
+        </div>
       </div>
     </div>
-    <div class='scroll-hint'><span class='line'></span>SCROLL</div>
   </section>
 
-  <section id='projects' class='sec'>
-    <div class='wrap'>
-      <div class='sec-head rv'>
-        <span class='num mono'>01</span>
-        <h2>项目</h2>
-        <span class='en mono'>Projects</span>
+  <section class='band' id='about'>
+    <div class='band-in'>
+      <div>
+        <div class='k mono'>ABOUT</div>
+        <h2>土木工程（装配式建筑方向）在读<br>把「描述需求 → 生成代码 → 输出图纸」压成一次对话</h2>
       </div>
+      <div>
+        <p>我不想把时间花在重复的描线上。自然语言说清设计意图，让模型写出参数化绘图代码，出图这件事就从「画」变成「校对」——判断力留在人这边。</p>
+        <ul class='facts'>
+          <li><b>1</b><span>套自建出图工具</span></li>
+          <li><b>2</b><span>项竞赛 / 课题产出</span></li>
+          <li><b>3</b><span>项等级证书</span></li>
+          <li><b>4</b><span>类专业软件</span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
 
-      <article class='card feat rv' style='--d:1'>
-        <div class='inner feat-body'>
-          <div class='kicker mono'>PERSONAL PROJECT · 2026</div>
-          <h3>AI 一键出图</h3>
-          <p>自然语言描述设计需求，大模型生成 <code>ezdxf</code> 参数化绘图代码，一键输出 DXF 图纸。内置「标注链规则」，从源头避免出图比例翻车。</p>
-          <div class='meta mono'>
-            <span><i>ROLE</i>独立开发</span>
-            <span><i>PERIOD</i>2026</span>
-            <span><i>STACK</i>Python · ezdxf · LLM</span>
-            <span><i>OUTPUT</i>参数化出图流程</span>
-          </div>
-          <div class='chips'>
-            <span class='chip'>Python</span><span class='chip'>ezdxf</span>
-            <span class='chip'>LLM</span><span class='chip'>DXF</span>
-          </div>
-          <div class='badge-soon mono'><i></i>在线 Demo 即将上线</div>
-        </div>
-        <div class='feat-art'>
+  <section class='sec' id='projects'>
+    <div class='sec-en mono'>PROJECTS</div>
+    <div class='wrap'>
+      <div class='sec-head rv'><span class='num mono'>01</span><h2>项目</h2></div>
+      <div class='rule line-grow'></div>
+
+      <article class='work work-lg rv'>
+        <figure class='work-fig'>
           <svg data-draw viewBox='0 0 320 230' fill='none' xmlns='http://www.w3.org/2000/svg' aria-hidden='true'>
-            <g stroke='#5eead4' stroke-width='1.1' opacity='.5'>
+            <g stroke='#9aa0a8' stroke-width='1'>
               <path d='M30 210V30h260' stroke-dasharray='3 5'/>
               <path d='M30 210h260' stroke-dasharray='3 5'/>
             </g>
-            <rect x='42' y='42' width='236' height='150' stroke='#5eead4' stroke-width='1.6' opacity='.95'/>
-            <path d='M42 122h96M138 42v150M138 122h140M208 122v70' stroke='#5eead4' stroke-width='1.3' opacity='.8'/>
-            <rect x='138' y='42' width='70' height='80' stroke='#7c9cff' stroke-width='1.1' stroke-dasharray='5 4' opacity='.85'/>
-            <circle cx='173' cy='82' r='13' stroke='#7c9cff' stroke-width='1' opacity='.6'/>
-            <path d='M173 69v-9M173 95v9M160 82h-9M186 82h9' stroke='#7c9cff' stroke-width='1' opacity='.55'/>
-            <g stroke='#5eead4' stroke-width='1' opacity='.55'>
-              <path d='M42 205h236'/><path d='M42 200v10'/><path d='M278 200v10'/>
-              <path d='M162 200v-6'/>
+            <rect x='42' y='42' width='236' height='150' stroke='#2b2f36' stroke-width='1.8'/>
+            <path d='M42 122h96M138 42v150M138 122h140M208 122v70' stroke='#2b2f36' stroke-width='1.4'/>
+            <rect x='138' y='42' width='70' height='80' stroke='#6b7280' stroke-width='1.1' stroke-dasharray='5 4'/>
+            <circle cx='173' cy='82' r='13' stroke='#6b7280' stroke-width='1'/>
+            <path d='M173 69v-9M173 95v9M160 82h-9M186 82h9' stroke='#6b7280' stroke-width='1'/>
+            <g stroke='#2b2f36' stroke-width='.9'>
+              <path d='M42 205h236'/><path d='M42 200v10'/><path d='M278 200v10'/><path d='M162 200v-6'/>
             </g>
-            <g fill='#a9f5e6' font-family='ui-monospace,monospace' font-size='8' opacity='.9'>
+            <g fill='#4b5563' font-family='ui-monospace,monospace' font-size='8'>
               <text x='62' y='86'>LIVING</text>
               <text x='150' y='150'>BATH</text>
               <text x='222' y='100'>BEDROOM</text>
               <text x='150' y='196' text-anchor='middle'>24800</text>
             </g>
-            <g stroke='#c084fc' stroke-width='1' opacity='.8'>
-              <path d='M60 60h28'/><path d='M60 60v-8'/><path d='M88 60v-8'/>
-            </g>
           </svg>
+        </figure>
+        <div>
+          <div class='k mono'>PERSONAL PROJECT · 2026</div>
+          <h3>AI 一键出图</h3>
+          <p class='desc'>自然语言描述设计需求，大模型生成 <code>ezdxf</code> 参数化绘图代码，一键输出 DXF 图纸。内置「标注链规则」，从源头避免出图比例翻车。</p>
+          <dl class='spec'>
+            <div><dt>ROLE</dt><dd>独立开发</dd></div>
+            <div><dt>PERIOD</dt><dd>2026</dd></div>
+            <div><dt>STACK</dt><dd>Python · ezdxf · LLM</dd></div>
+            <div><dt>OUTPUT</dt><dd>参数化出图流程</dd></div>
+          </dl>
+          <span class='soon mono'>在线 DEMO 即将上线</span>
         </div>
       </article>
 
-      <div class='grid2'>
-        <article class='card rv' style='--d:2'>
-          <div class='inner'>
-            <div class='art-sm'>
-              <svg data-draw viewBox='0 0 240 110' fill='none' xmlns='http://www.w3.org/2000/svg' aria-hidden='true'>
-                <g stroke='#7c9cff' stroke-width='1.2' opacity='.85'>
-                  <path d='M40 96h160'/><path d='M60 96V64'/><path d='M60 64l46-22'/><path d='M106 42l30 16'/>
-                  <circle cx='106' cy='42' r='7'/><circle cx='136' cy='58' r='5'/>
-                  <path d='M136 58l22-30'/><path d='M158 28l14 6'/>
-                </g>
-                <g stroke='#5eead4' stroke-width='1' opacity='.6'>
-                  <circle cx='106' cy='42' r='16' stroke-dasharray='4 4'/>
-                  <path d='M40 96v-8M200 96v-8M40 88h160' stroke-dasharray='4 4'/>
-                </g>
-                <circle cx='60' cy='96' r='3' fill='#5eead4'/>
-              </svg>
-            </div>
-            <div class='kicker mono' style='color:#9fb0c6'>PROVINCIAL AWARD · 2025</div>
-            <h3>「建美中原」建筑机器人大赛</h3>
-            <p>河南省建筑机器人竞赛，省级二等奖。</p>
-            <div class='meta mono'>
-              <span><i>ROLE</i>参赛队员</span>
-              <span><i>PERIOD</i>2025</span>
-              <span><i>AWARD</i>省级二等奖</span>
-            </div>
-            <div class='chips'><span class='chip'>建筑机器人</span><span class='chip'>省级二等奖</span></div>
-          </div>
+      <div class='work-row'>
+        <article class='work rv'>
+          <figure class='work-fig'>
+            <svg data-draw viewBox='0 0 240 110' fill='none' xmlns='http://www.w3.org/2000/svg' aria-hidden='true'>
+              <g stroke='#2b2f36' stroke-width='1.3'>
+                <path d='M40 96h160'/><path d='M60 96V64'/><path d='M60 64l46-22'/><path d='M106 42l30 16'/>
+                <circle cx='106' cy='42' r='7'/><circle cx='136' cy='58' r='5'/>
+                <path d='M136 58l22-30'/><path d='M158 28l14 6'/>
+              </g>
+              <g stroke='#9aa0a8' stroke-width='1'>
+                <circle cx='106' cy='42' r='16' stroke-dasharray='4 4'/>
+                <path d='M40 96v-8M200 96v-8M40 88h160' stroke-dasharray='4 4'/>
+              </g>
+              <circle cx='60' cy='96' r='3' fill='#2b2f36'/>
+            </svg>
+          </figure>
+          <div class='k mono'>PROVINCIAL AWARD · 2025</div>
+          <h3>「建美中原」建筑机器人大赛</h3>
+          <p class='desc'>河南省建筑机器人竞赛，省级二等奖。</p>
+          <dl class='spec'>
+            <div><dt>ROLE</dt><dd>参赛队员</dd></div>
+            <div><dt>AWARD</dt><dd>省级二等奖</dd></div>
+          </dl>
         </article>
 
-        <article class='card rv' style='--d:3'>
-          <div class='inner'>
-            <div class='art-sm'>
-              <svg data-draw viewBox='0 0 240 110' fill='none' xmlns='http://www.w3.org/2000/svg' aria-hidden='true'>
-                <path d='M28 92h184' stroke='#7c9cff' stroke-width='1.1' opacity='.5' stroke-dasharray='3 4'/>
-                <path d='M56 92l26-52h76l22 52z' stroke='#5eead4' stroke-width='1.6' opacity='.95'/>
-                <path d='M82 40h72' stroke='#5eead4' stroke-width='1.1' opacity='.7'/>
-                <path d='M60 92v-16h30v16M118 92v-16h30v16' stroke='#7c9cff' stroke-width='1' opacity='.55'/>
-                <g stroke='#5eead4' stroke-width='.9' opacity='.65' stroke-dasharray='6 5'>
-                  <path d='M62 78c26 6 34 14 58 14'/><path d='M78 66c24 8 30 24 42 26'/>
-                  <path d='M158 78c-26 6-30 14-46 14'/>
-                </g>
-                <path d='M28 92h184' stroke='#c084fc' stroke-width='1.2' opacity='.8'/>
-                <g fill='#a9f5e6' font-family='ui-monospace,monospace' font-size='7' opacity='.8'>
-                  <text x='112' y='30'>DAM</text>
-                </g>
-              </svg>
-            </div>
-            <div class='kicker mono' style='color:#9fb0c6'>GRADUATION PROJECT · 2026</div>
-            <h3>土石坝渗流数值模拟</h3>
-            <p>毕业设计课题：土石坝渗流场数值模拟分析。</p>
-            <div class='meta mono'>
-              <span><i>ROLE</i>独立完成</span>
-              <span><i>PERIOD</i>2026</span>
-              <span><i>OUTPUT</i>渗流场模拟报告</span>
-            </div>
-            <div class='chips'><span class='chip'>数值模拟</span><span class='chip'>渗流分析</span></div>
-          </div>
+        <article class='work rv' style='--d:1'>
+          <figure class='work-fig'>
+            <svg data-draw viewBox='0 0 240 110' fill='none' xmlns='http://www.w3.org/2000/svg' aria-hidden='true'>
+              <path d='M28 92h184' stroke='#9aa0a8' stroke-width='1' stroke-dasharray='3 4'/>
+              <path d='M56 92l26-52h76l22 52z' stroke='#2b2f36' stroke-width='1.8'/>
+              <path d='M82 40h72' stroke='#2b2f36' stroke-width='1.2'/>
+              <path d='M60 92v-16h30v16M118 92v-16h30v16' stroke='#6b7280' stroke-width='1'/>
+              <g stroke='#9aa0a8' stroke-width='.9' stroke-dasharray='6 5'>
+                <path d='M62 78c26 6 34 14 58 14'/><path d='M78 66c24 8 30 24 42 26'/>
+                <path d='M158 78c-26 6-30 14-46 14'/>
+              </g>
+              <g fill='#4b5563' font-family='ui-monospace,monospace' font-size='7'>
+                <text x='112' y='30'>DAM</text>
+              </g>
+            </svg>
+          </figure>
+          <div class='k mono'>GRADUATION PROJECT · 2026</div>
+          <h3>土石坝渗流数值模拟</h3>
+          <p class='desc'>毕业设计课题：土石坝渗流场数值模拟分析。</p>
+          <dl class='spec'>
+            <div><dt>ROLE</dt><dd>独立完成</dd></div>
+            <div><dt>OUTPUT</dt><dd>渗流场模拟报告</dd></div>
+          </dl>
         </article>
       </div>
     </div>
   </section>
 
-  <section id='skills' class='sec'>
+  <section class='sec' id='skills' style='background:var(--paper2)'>
+    <div class='sec-en mono'>SKILLS</div>
     <div class='wrap'>
-      <div class='sec-head rv'>
-        <span class='num mono'>02</span>
-        <h2>技能</h2>
-        <span class='en mono'>Skills</span>
-      </div>
+      <div class='sec-head rv'><span class='num mono'>02</span><h2>技能</h2></div>
+      <div class='rule line-grow'></div>
       <div class='skill-grid'>
-        <div class='card rv' style='--d:1'>
-          <div class='inner'>
-            <div class='mini-k mono'>SOFTWARE</div>
-            <h4>专业软件</h4>
-            <div class='sk-list'>
-              <div class='sk-row'><span>AutoCAD</span><span class='lv mono'>熟练</span></div>
-              <div class='sk-row'><span>Revit</span><span class='lv mono'>会用</span></div>
-              <div class='sk-row'><span>广联达</span><span class='lv mono'>会用</span></div>
-              <div class='sk-row'><span>PKPM</span><span class='lv mono'>了解</span></div>
-            </div>
-          </div>
+        <div class='skill rv'>
+          <h4>SOFTWARE / 专业软件</h4>
+          <div class='sk'><span>AutoCAD</span><span class='lv'>熟练</span></div>
+          <div class='sk'><span>Revit</span><span class='lv'>会用</span></div>
+          <div class='sk'><span>广联达</span><span class='lv'>会用</span></div>
+          <div class='sk'><span>PKPM</span><span class='lv'>了解</span></div>
         </div>
-        <div class='card rv' style='--d:2'>
-          <div class='inner'>
-            <div class='mini-k mono'>CODING</div>
-            <h4>编程</h4>
-            <div class='sk-list'>
-              <div class='sk-row'><span>Python</span><span class='lv mono'>熟练</span></div>
-              <div class='sk-row'><span>ezdxf 参数化出图</span><span class='lv mono'>会用</span></div>
-              <div class='sk-row'><span>大模型 API 调用</span><span class='lv mono'>会用</span></div>
-            </div>
-          </div>
+        <div class='skill rv' style='--d:1'>
+          <h4>CODING / 编程</h4>
+          <div class='sk'><span>Python</span><span class='lv'>熟练</span></div>
+          <div class='sk'><span>ezdxf 参数化出图</span><span class='lv'>会用</span></div>
+          <div class='sk'><span>大模型 API 调用</span><span class='lv'>会用</span></div>
         </div>
-        <div class='card rv' style='--d:3'>
-          <div class='inner'>
-            <div class='mini-k mono'>CERTIFICATES</div>
-            <h4>证书</h4>
-            <div class='sk-list'>
-              <div class='sk-row'><span>CET-4</span><span class='lv mono'>已通过</span></div>
-              <div class='sk-row'><span>计算机二级</span><span class='lv mono'>已通过</span></div>
-              <div class='sk-row'><span>普通话二甲</span><span class='lv mono'>已通过</span></div>
-            </div>
-          </div>
+        <div class='skill rv' style='--d:2'>
+          <h4>CERTIFICATES / 证书</h4>
+          <div class='sk'><span>CET-4</span><span class='lv'>已通过</span></div>
+          <div class='sk'><span>计算机二级</span><span class='lv'>已通过</span></div>
+          <div class='sk'><span>普通话二甲</span><span class='lv'>已通过</span></div>
         </div>
       </div>
     </div>
   </section>
 
-  <section id='timeline' class='sec'>
+  <section class='sec' id='timeline'>
+    <div class='sec-en mono'>TIMELINE</div>
     <div class='wrap'>
-      <div class='sec-head rv'>
-        <span class='num mono'>03</span>
-        <h2>时间线</h2>
-        <span class='en mono'>Timeline</span>
-      </div>
+      <div class='sec-head rv'><span class='num mono'>03</span><h2>时间线</h2></div>
+      <div class='rule line-grow'></div>
       <div class='tl'>
-        <div class='tl-item rv'><span class='tl-year mono'>2023</span><div class='tl-body'><b>入学</b>河南工程学院 · 土木工程（装配式建筑方向）</div></div>
-        <div class='tl-item rv' style='--d:1'><span class='tl-year mono'>2025</span><div class='tl-body'><b>省级二等奖</b>「建美中原」建筑机器人大赛</div></div>
-        <div class='tl-item rv' style='--d:2'><span class='tl-year mono'>2026</span><div class='tl-body'><b>AI 一键出图</b>自然语言 → ezdxf 参数化代码 → DXF</div></div>
-        <div class='tl-item rv' style='--d:3'><span class='tl-year mono'>2027</span><div class='tl-body'><b>毕业设计</b>土石坝渗流数值模拟 · 求职中</div></div>
+        <div class='tl-item rv'><span class='tl-y'>2023</span><div class='tl-b'><b>入学</b>河南工程学院 · 土木工程（装配式建筑方向）</div></div>
+        <div class='tl-item rv' style='--d:1'><span class='tl-y'>2025</span><div class='tl-b'><b>省级二等奖</b>「建美中原」建筑机器人大赛</div></div>
+        <div class='tl-item rv' style='--d:2'><span class='tl-y'>2026</span><div class='tl-b'><b>AI 一键出图</b>自然语言 → ezdxf 参数化代码 → DXF</div></div>
+        <div class='tl-item rv' style='--d:3'><span class='tl-y'>2027</span><div class='tl-b'><b>毕业设计</b>土石坝渗流数值模拟 · 求职中</div></div>
       </div>
     </div>
   </section>
 
-  <section id='education' class='sec'>
-    <div class='wrap'>
-      <div class='sec-head rv'>
-        <span class='num mono'>04</span>
-        <h2>教育</h2>
-        <span class='en mono'>Education</span>
-      </div>
-      <div class='card edu rv'>
-        <div class='inner edu-main'>
-          <span class='edu-school'>河南工程学院</span>
-          <span class='edu-detail'>土木工程（装配式建筑方向）· 本科 · 2027 届</span>
-        </div>
-        <span class='edu-time mono'>2023 — 2027</span>
-      </div>
+  <section class='contact' id='contact'>
+    <div class='contact-bg' aria-hidden='true'>
+      <svg viewBox='0 0 900 500' fill='none' xmlns='http://www.w3.org/2000/svg' preserveAspectRatio='xMidYMid slice'>
+        <g stroke='#ffffff' stroke-width='1.1'>
+          <circle cx='700' cy='250' r='150' stroke-dasharray='5 7'/>
+          <circle cx='700' cy='250' r='96'/>
+          <circle cx='700' cy='250' r='44'/>
+          <path d='M700 60v380M520 250h360'/>
+        </g>
+      </svg>
     </div>
-  </section>
-
-  <section id='contact' class='sec'>
-    <div class='wrap'>
-      <div class='sec-head rv'>
-        <span class='num mono'>05</span>
-        <h2>联系方式</h2>
-        <span class='en mono'>Contact</span>
-      </div>
-      <div class='card contact-card rv'>
-        <div class='inner'>
-          <h3>聊聊机会，或者聊聊图纸</h3>
-          <div class='sub'>2027 届秋招 / 实习 / 项目合作，欢迎随时邮件找我。</div>
-          <div class='intent'>
-            <div><i>意向岗位</i><span>结构设计 / 深化设计 / BIM</span></div>
-            <div><i>工作性质</i><span>2027 届校招 · 可实习</span></div>
-            <div><i>到岗时间</i><span>2027.07</span></div>
+    <div class='contact-in'>
+      <h2>CONTACT<em>.</em></h2>
+      <ul class='clist'>
+        <li>
+          <span class='cico'><svg viewBox='0 0 24 24'><rect x='3' y='5' width='18' height='14' rx='2'/><path d='M3 7l9 6 9-6'/></svg></span>
+          <div>
+            <div class='lb'>邮箱</div>
+            <div class='vl mono'>z1ka@qq.com<button class='copy' type='button' data-mail='z1ka@qq.com'>复制</button></div>
           </div>
-          <div class='mail-row'>
-            <span class='addr'>z1ka@qq.com</span>
-            <button class='copy' type='button' data-mail='z1ka@qq.com'>复制</button>
+        </li>
+        <li>
+          <span class='cico'><svg viewBox='0 0 24 24'><path d='M4 20V8l8-4 8 4v12'/><path d='M9 20v-7h6v7'/></svg></span>
+          <div>
+            <div class='lb'>意向岗位</div>
+            <div class='vl'>结构设计 / 深化设计 / BIM</div>
           </div>
-        </div>
-      </div>
+        </li>
+        <li>
+          <span class='cico'><svg viewBox='0 0 24 24'><circle cx='12' cy='12' r='9'/><path d='M12 7v5l4 2'/></svg></span>
+          <div>
+            <div class='lb'>到岗时间</div>
+            <div class='vl'>2027.07 · 可实习</div>
+          </div>
+        </li>
+      </ul>
     </div>
   </section>
 
 </main>
 
 <footer>
-  <div class='wrap foot-in'>
-    <div>© 2026 张明正 <span class='acct'>·</span> 河南工程学院</div>
-    <div>DRAWN FOR 2027 秋招 <span class='acct'>/</span> 装配式建筑方向</div>
+  <div class='foot-in'>
+    <div>© 2026 张明正 · 河南工程学院</div>
+    <div>DRAWN FOR 2027 秋招 / 装配式建筑方向</div>
   </div>
 </footer>
 
@@ -668,31 +482,24 @@ html{scrollbar-width:thin;scrollbar-color:rgba(255,255,255,.16) transparent}
 (function(){
   var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  // scroll progress
-  var bar = document.querySelector('.progress i');
-  function onScroll(){
-    var h = document.documentElement;
-    var max = h.scrollHeight - h.clientHeight;
-    var p = max > 0 ? h.scrollTop / max : 0;
-    bar.style.transform = 'scaleX(' + p + ')';
-  }
-  window.addEventListener('scroll', onScroll, {passive:true});
-  onScroll();
+  // nav 在首屏透明，滚动后切纸色
+  var nav = document.querySelector('.nav');
+  function onNav(){ nav.classList.toggle('solid', window.scrollY > window.innerHeight * .72); }
+  window.addEventListener('scroll', onNav, {passive:true}); onNav();
 
-  // reveal
-  var rv = document.querySelectorAll('.rv');
+  // 通用进入动画
+  var rv = document.querySelectorAll('.rv, .line-grow');
   if ('IntersectionObserver' in window && !reduce){
     var io = new IntersectionObserver(function(es){
-      es.forEach(function(e){
-        if (e.isIntersecting){ e.target.classList.add('on'); io.unobserve(e.target); }
-      });
-    }, {threshold:.12, rootMargin:'0px 0px -8% 0px'});
-    rv.forEach(function(el){ io.observe(el); });
-  } else {
-    rv.forEach(function(el){ el.classList.add('on'); });
-  }
+      es.forEach(function(e){ if (e.isIntersecting){ e.target.classList.add('on'); io.unobserve(e.target); } });
+    }, {threshold:.05, rootMargin:'0px 0px -2% 0px'});
+    rv.forEach(function(el){
+      var r = el.getBoundingClientRect();
+      if (r.top < window.innerHeight * .96) { el.classList.add('on'); } else { io.observe(el); }
+    });
+  } else { rv.forEach(function(el){ el.classList.add('on'); }); }
 
-  // active nav
+  // 导航高亮
   var links = Array.prototype.slice.call(document.querySelectorAll('.links a'));
   var secs = links.map(function(a){ return document.querySelector(a.getAttribute('href')); });
   if ('IntersectionObserver' in window){
@@ -704,175 +511,49 @@ html{scrollbar-width:thin;scrollbar-color:rgba(255,255,255,.16) transparent}
           if (i > -1) links[i].classList.add('on');
         }
       });
-    }, {threshold:.28});
+    }, {threshold:.3});
     secs.forEach(function(s){ if (s) io2.observe(s); });
   }
 
-  // cursor glow
-  var glow = document.querySelector('.cursor-glow');
-  if (!reduce && glow && window.matchMedia('(hover:hover)').matches){
-    var gx = innerWidth/2, gy = innerHeight/4, cx = gx, cy = gy;
-    document.addEventListener('mousemove', function(e){ gx = e.clientX; gy = e.clientY; }, {passive:true});
-    (function loop(){
-      cx += (gx - cx) * .09; cy += (gy - cy) * .09;
-      glow.style.left = cx + 'px'; glow.style.top = cy + 'px';
-      requestAnimationFrame(loop);
-    })();
-  }
-
-  // card spotlight
-  document.querySelectorAll('.card').forEach(function(card){
-    card.addEventListener('mousemove', function(e){
-      var r = card.getBoundingClientRect();
-      card.style.setProperty('--mx', (e.clientX - r.left) + 'px');
-      card.style.setProperty('--my', (e.clientY - r.top) + 'px');
-    });
-  });
-
-  // copy email
-  var btn = document.querySelector('.copy');
-  if (btn){
-    btn.addEventListener('click', function(){
-      var mail = btn.getAttribute('data-mail');
-      var done = function(){
-        btn.textContent = '已复制';
-        btn.classList.add('done');
-        setTimeout(function(){ btn.textContent = '复制'; btn.classList.remove('done'); }, 1800);
-      };
-      if (navigator.clipboard && navigator.clipboard.writeText){
-        navigator.clipboard.writeText(mail).then(done).catch(function(){ fallback(mail, done); });
-      } else { fallback(mail, done); }
-    });
-  }
-  function fallback(text, cb){
-    var ta = document.createElement('textarea');
-    ta.value = text; ta.style.position = 'fixed'; ta.style.opacity = '0';
-    document.body.appendChild(ta); ta.select();
-    try { document.execCommand('copy'); cb(); } catch(e){}
-    document.body.removeChild(ta);
-  }
-
-  // ---------- v2: 名字逐字揭幕 ----------
-  var h1El = document.querySelector('.hero h1[data-split]');
-  if (h1El && !reduce){
-    var nameStr = h1El.textContent.trim();
-    h1El.classList.remove('rv');
-    h1El.classList.add('split');
-    h1El.setAttribute('aria-label', nameStr);
-    var charFrag = document.createDocumentFragment();
-    nameStr.split('').forEach(function(ch, i){
-      var sp = document.createElement('span');
-      sp.className = 'ch'; sp.setAttribute('aria-hidden', 'true');
-      var it = document.createElement('i');
-      it.textContent = ch; it.style.setProperty('--i', i);
-      sp.appendChild(it); charFrag.appendChild(sp);
-    });
-    h1El.textContent = '';
-    h1El.appendChild(charFrag);
-
-    // 让每个字截取整块渐变里属于自己位置的那一段
-    var syncGrad = function(){
-      h1El.style.setProperty('--h1w', h1El.offsetWidth + 'px');
-      h1El.style.setProperty('--h1h', h1El.offsetHeight + 'px');
-      Array.prototype.forEach.call(h1El.querySelectorAll('.ch>i'), function(it){
-        it.style.setProperty('--bx', -(it.offsetLeft - h1El.offsetLeft) + 'px');
-        it.style.setProperty('--by', -(it.offsetTop - h1El.offsetTop) + 'px');
-      });
-    };
-    requestAnimationFrame(syncGrad);
-    var rzT = null;
-    window.addEventListener('resize', function(){
-      clearTimeout(rzT); rzT = setTimeout(syncGrad, 150);
-    }, {passive:true});
-  }
-
-  // ---------- v2: 尺寸标注线 ----------
-  var dimEl = document.querySelector('.dim');
-  if (dimEl){
-    if ('IntersectionObserver' in window && !reduce){
-      var ioDim = new IntersectionObserver(function(es){
-        es.forEach(function(e){
-          if (e.isIntersecting){ e.target.classList.add('on'); ioDim.unobserve(e.target); }
-        });
-      }, {threshold:.4});
-      ioDim.observe(dimEl);
-    } else { dimEl.classList.add('on'); }
-  }
-
-  // ---------- v2: 图纸线稿逐笔画出 ----------
+  // 线稿逐笔画出
   Array.prototype.forEach.call(document.querySelectorAll('svg[data-draw]'), function(svg){
     var k = 0;
     Array.prototype.forEach.call(svg.querySelectorAll('path,rect,circle,line,polygon'), function(el){
-      if (el.getAttribute('stroke-dasharray')) return;   // 虚线辅助线保持原样
+      if (el.getAttribute('stroke-dasharray')) return;
       var len = 400;
-      try { var l = el.getTotalLength(); if (l && isFinite(l)) len = l; } catch (e) {}
+      try { var l = el.getTotalLength(); if (l && isFinite(l)) len = l; } catch(e){}
       el.classList.add('dlo');
       el.style.setProperty('--len', len);
       el.style.setProperty('--k', k++);
     });
     if ('IntersectionObserver' in window && !reduce){
-      var ioDraw = new IntersectionObserver(function(es){
-        es.forEach(function(e){
-          if (e.isIntersecting){ e.target.classList.add('on'); ioDraw.unobserve(e.target); }
-        });
-      }, {threshold:.25});
-      ioDraw.observe(svg);
+      var ioD = new IntersectionObserver(function(es){
+        es.forEach(function(e){ if (e.isIntersecting){ e.target.classList.add('on'); ioD.unobserve(e.target); } });
+      }, {threshold:.2});
+      ioD.observe(svg);
     } else { svg.classList.add('on'); }
   });
 
-  var fine = window.matchMedia('(hover:hover) and (pointer:fine)').matches;
-  var desktop = window.innerWidth >= 900;
-
-  // ---------- v2: 卡片 3D 微倾斜 ----------
-  if (fine && desktop && !reduce){
-    Array.prototype.forEach.call(document.querySelectorAll('.card'), function(card){
-      card.classList.add('tilt');
-      card.addEventListener('pointermove', function(e){
-        var r = card.getBoundingClientRect();
-        var px = (e.clientX - r.left) / r.width - .5;
-        var py = (e.clientY - r.top) / r.height - .5;
-        card.style.setProperty('--ry', (px * 4).toFixed(2) + 'deg');
-        card.style.setProperty('--rx', (-py * 3.2).toFixed(2) + 'deg');
-      });
-      card.addEventListener('pointerleave', function(){
-        card.style.setProperty('--ry', '0deg');
-        card.style.setProperty('--rx', '0deg');
-      });
+  // 复制邮箱
+  var btn = document.querySelector('.copy');
+  if (btn){
+    btn.addEventListener('click', function(){
+      var mail = btn.getAttribute('data-mail');
+      var done = function(){
+        btn.textContent = '已复制'; btn.classList.add('done');
+        setTimeout(function(){ btn.textContent = '复制'; btn.classList.remove('done'); }, 1800);
+      };
+      if (navigator.clipboard && navigator.clipboard.writeText){
+        navigator.clipboard.writeText(mail).then(done).catch(function(){ fb(mail, done); });
+      } else { fb(mail, done); }
     });
   }
-
-  // ---------- v2: 按钮磁吸 ----------
-  if (fine && desktop && !reduce){
-    Array.prototype.forEach.call(document.querySelectorAll('.btn.primary,.copy'), function(el){
-      el.addEventListener('pointermove', function(e){
-        var r = el.getBoundingClientRect();
-        el.style.setProperty('--mx2', ((e.clientX - (r.left + r.width / 2)) * .18).toFixed(1) + 'px');
-        el.style.setProperty('--my2', ((e.clientY - (r.top + r.height / 2)) * .3).toFixed(1) + 'px');
-      });
-      el.addEventListener('pointerleave', function(){
-        el.style.setProperty('--mx2', '0px');
-        el.style.setProperty('--my2', '0px');
-      });
-    });
-  }
-
-  // ---------- v2: 首屏视差 ----------
-  if (!reduce){
-    var heroWrap = document.querySelector('.hero .wrap');
-    var hintEl = document.querySelector('.scroll-hint');
-    var ticking = false;
-    window.addEventListener('scroll', function(){
-      if (ticking) return; ticking = true;
-      requestAnimationFrame(function(){
-        var y = window.scrollY || window.pageYOffset || 0;
-        if (heroWrap && y < window.innerHeight * 1.25){
-          heroWrap.style.transform = 'translate3d(0,' + (y * .12).toFixed(1) + 'px,0)';
-          heroWrap.style.opacity = Math.max(0, 1 - y / 620).toFixed(3);
-        }
-        if (hintEl) hintEl.style.opacity = Math.max(0, 1 - y / 200).toFixed(2);
-        ticking = false;
-      });
-    }, {passive:true});
+  function fb(text, cb){
+    var ta = document.createElement('textarea');
+    ta.value = text; ta.style.position = 'fixed'; ta.style.opacity = '0';
+    document.body.appendChild(ta); ta.select();
+    try { document.execCommand('copy'); cb(); } catch(e){}
+    document.body.removeChild(ta);
   }
 })();
 </script>
