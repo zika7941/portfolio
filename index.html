@@ -327,6 +327,37 @@ html{scrollbar-width:thin;scrollbar-color:rgba(255,255,255,.16) transparent}
   .hB .actions{margin-top:32px}
   .hB-art{min-height:290px;padding:6px}
 }
+/* ===== v4: 信息密度 ===== */
+.facts{display:flex;flex-wrap:wrap;gap:9px 24px;margin-top:32px;padding-top:22px;border-top:1px solid var(--stroke)}
+.facts span{font-size:12.5px;color:var(--dim);display:inline-flex;align-items:baseline;gap:7px}
+.facts b{font-family:var(--mono);font-size:15px;font-weight:600;color:var(--acc)}
+.meta{display:flex;flex-wrap:wrap;gap:7px 22px;margin-top:18px;padding-top:15px;border-top:1px solid var(--stroke)}
+.meta span{font-size:11px;color:var(--dim);display:inline-flex;gap:7px;align-items:baseline}
+.meta i{font-style:normal;font-size:9px;letter-spacing:.2em;color:var(--dim2)}
+.sk-list{margin-top:4px;border-top:1px solid var(--stroke)}
+.sk-row{display:flex;align-items:center;justify-content:space-between;gap:12px;
+  padding:9px 0;border-bottom:1px solid rgba(255,255,255,.115);font-size:13.5px;color:#c2cee0}
+.sk-row:last-child{border-bottom:0}
+.sk-row .lv{font-size:10px;letter-spacing:.14em;color:var(--acc);padding:2px 8px;border-radius:999px;
+  border:1px solid rgba(94,234,212,.24);background:rgba(94,234,212,.07)}
+.tl{position:relative;padding-left:26px}
+.tl::before{content:'';position:absolute;left:5px;top:14px;bottom:14px;width:1px;
+  background:linear-gradient(180deg,var(--acc),rgba(124,156,255,.5),transparent)}
+.tl-item{position:relative;display:flex;gap:22px;padding:15px 0;border-bottom:1px solid var(--stroke)}
+.tl-item:last-child{border-bottom:0}
+.tl-item::before{content:'';position:absolute;left:-24px;top:23px;width:7px;height:7px;border-radius:2px;
+  background:var(--acc);box-shadow:0 0 12px rgba(94,234,212,.8)}
+.tl-year{flex:0 0 52px;font-size:12px;letter-spacing:.18em;color:var(--acc);padding-top:2px}
+.tl-body{font-size:14.5px;color:#a9b6c8}
+.tl-body b{color:var(--txt);font-weight:640;margin-right:9px}
+.intent{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:26px}
+.intent div{padding:16px 18px;border:1px solid var(--stroke);border-radius:14px;background:rgba(255,255,255,.025)}
+.intent i{display:block;font-style:normal;font-family:var(--mono);font-size:9px;letter-spacing:.22em;
+  color:var(--dim2);margin-bottom:8px}
+.intent span{font-size:13.5px;color:#dbe6f5}
+@media(max-width:900px){ .intent{grid-template-columns:1fr} }
+@media(max-width:640px){ .links a{padding:7px 7px;font-size:12px} }
+
 @media(prefers-reduced-motion:reduce){
   *,*::before,*::after{animation:none!important;transition:none!important}
   .rv{opacity:1;transform:none}
@@ -351,6 +382,7 @@ html{scrollbar-width:thin;scrollbar-color:rgba(255,255,255,.16) transparent}
     <nav class='links'>
       <a href='#projects'>项目</a>
       <a href='#skills'>技能</a>
+      <a href='#timeline'>时间线</a>
       <a href='#education'>教育</a>
       <a href='#contact'>联系</a>
     </nav>
@@ -369,6 +401,12 @@ html{scrollbar-width:thin;scrollbar-color:rgba(255,255,255,.16) transparent}
         <div class='actions rv' style='--d:4'>
           <a class='btn primary' href='#projects'>查看项目<span class='arw'>→</span></a>
           <a class='btn ghost' href='#contact'>联系方式</a>
+        </div>
+        <div class='facts rv' style='--d:5'>
+          <span><b>1</b> 套自建出图工具</span>
+          <span><b>2</b> 项竞赛 / 课题产出</span>
+          <span><b>4</b> 类专业软件</span>
+          <span><b>3</b> 项等级证书</span>
         </div>
       </div>
       <div class='hB-art rv' style='--d:2'>
@@ -411,6 +449,12 @@ html{scrollbar-width:thin;scrollbar-color:rgba(255,255,255,.16) transparent}
           <div class='kicker mono'>PERSONAL PROJECT · 2026</div>
           <h3>AI 一键出图</h3>
           <p>自然语言描述设计需求，大模型生成 <code>ezdxf</code> 参数化绘图代码，一键输出 DXF 图纸。内置「标注链规则」，从源头避免出图比例翻车。</p>
+          <div class='meta mono'>
+            <span><i>ROLE</i>独立开发</span>
+            <span><i>PERIOD</i>2026</span>
+            <span><i>STACK</i>Python · ezdxf · LLM</span>
+            <span><i>OUTPUT</i>参数化出图流程</span>
+          </div>
           <div class='chips'>
             <span class='chip'>Python</span><span class='chip'>ezdxf</span>
             <span class='chip'>LLM</span><span class='chip'>DXF</span>
@@ -465,6 +509,11 @@ html{scrollbar-width:thin;scrollbar-color:rgba(255,255,255,.16) transparent}
             <div class='kicker mono' style='color:#9fb0c6'>PROVINCIAL AWARD · 2025</div>
             <h3>「建美中原」建筑机器人大赛</h3>
             <p>河南省建筑机器人竞赛，省级二等奖。</p>
+            <div class='meta mono'>
+              <span><i>ROLE</i>参赛队员</span>
+              <span><i>PERIOD</i>2025</span>
+              <span><i>AWARD</i>省级二等奖</span>
+            </div>
             <div class='chips'><span class='chip'>建筑机器人</span><span class='chip'>省级二等奖</span></div>
           </div>
         </article>
@@ -490,6 +539,11 @@ html{scrollbar-width:thin;scrollbar-color:rgba(255,255,255,.16) transparent}
             <div class='kicker mono' style='color:#9fb0c6'>GRADUATION PROJECT · 2026</div>
             <h3>土石坝渗流数值模拟</h3>
             <p>毕业设计课题：土石坝渗流场数值模拟分析。</p>
+            <div class='meta mono'>
+              <span><i>ROLE</i>独立完成</span>
+              <span><i>PERIOD</i>2026</span>
+              <span><i>OUTPUT</i>渗流场模拟报告</span>
+            </div>
             <div class='chips'><span class='chip'>数值模拟</span><span class='chip'>渗流分析</span></div>
           </div>
         </article>
@@ -509,9 +563,11 @@ html{scrollbar-width:thin;scrollbar-color:rgba(255,255,255,.16) transparent}
           <div class='inner'>
             <div class='mini-k mono'>SOFTWARE</div>
             <h4>专业软件</h4>
-            <div class='chips'>
-              <span class='chip'>AutoCAD</span><span class='chip'>Revit</span>
-              <span class='chip'>广联达</span><span class='chip'>PKPM</span>
+            <div class='sk-list'>
+              <div class='sk-row'><span>AutoCAD</span><span class='lv mono'>熟练</span></div>
+              <div class='sk-row'><span>Revit</span><span class='lv mono'>会用</span></div>
+              <div class='sk-row'><span>广联达</span><span class='lv mono'>会用</span></div>
+              <div class='sk-row'><span>PKPM</span><span class='lv mono'>了解</span></div>
             </div>
           </div>
         </div>
@@ -519,8 +575,10 @@ html{scrollbar-width:thin;scrollbar-color:rgba(255,255,255,.16) transparent}
           <div class='inner'>
             <div class='mini-k mono'>CODING</div>
             <h4>编程</h4>
-            <div class='chips'>
-              <span class='chip'>Python</span><span class='chip'>ezdxf 参数化出图</span>
+            <div class='sk-list'>
+              <div class='sk-row'><span>Python</span><span class='lv mono'>熟练</span></div>
+              <div class='sk-row'><span>ezdxf 参数化出图</span><span class='lv mono'>会用</span></div>
+              <div class='sk-row'><span>大模型 API 调用</span><span class='lv mono'>会用</span></div>
             </div>
           </div>
         </div>
@@ -528,8 +586,10 @@ html{scrollbar-width:thin;scrollbar-color:rgba(255,255,255,.16) transparent}
           <div class='inner'>
             <div class='mini-k mono'>CERTIFICATES</div>
             <h4>证书</h4>
-            <div class='chips'>
-              <span class='chip'>CET-4</span><span class='chip'>计算机二级</span><span class='chip'>普通话二甲</span>
+            <div class='sk-list'>
+              <div class='sk-row'><span>CET-4</span><span class='lv mono'>已通过</span></div>
+              <div class='sk-row'><span>计算机二级</span><span class='lv mono'>已通过</span></div>
+              <div class='sk-row'><span>普通话二甲</span><span class='lv mono'>已通过</span></div>
             </div>
           </div>
         </div>
@@ -537,10 +597,26 @@ html{scrollbar-width:thin;scrollbar-color:rgba(255,255,255,.16) transparent}
     </div>
   </section>
 
-  <section id='education' class='sec'>
+  <section id='timeline' class='sec'>
     <div class='wrap'>
       <div class='sec-head rv'>
         <span class='num mono'>03</span>
+        <h2>时间线</h2>
+        <span class='en mono'>Timeline</span>
+      </div>
+      <div class='tl'>
+        <div class='tl-item rv'><span class='tl-year mono'>2023</span><div class='tl-body'><b>入学</b>河南工程学院 · 土木工程（装配式建筑方向）</div></div>
+        <div class='tl-item rv' style='--d:1'><span class='tl-year mono'>2025</span><div class='tl-body'><b>省级二等奖</b>「建美中原」建筑机器人大赛</div></div>
+        <div class='tl-item rv' style='--d:2'><span class='tl-year mono'>2026</span><div class='tl-body'><b>AI 一键出图</b>自然语言 → ezdxf 参数化代码 → DXF</div></div>
+        <div class='tl-item rv' style='--d:3'><span class='tl-year mono'>2027</span><div class='tl-body'><b>毕业设计</b>土石坝渗流数值模拟 · 求职中</div></div>
+      </div>
+    </div>
+  </section>
+
+  <section id='education' class='sec'>
+    <div class='wrap'>
+      <div class='sec-head rv'>
+        <span class='num mono'>04</span>
         <h2>教育</h2>
         <span class='en mono'>Education</span>
       </div>
@@ -557,7 +633,7 @@ html{scrollbar-width:thin;scrollbar-color:rgba(255,255,255,.16) transparent}
   <section id='contact' class='sec'>
     <div class='wrap'>
       <div class='sec-head rv'>
-        <span class='num mono'>04</span>
+        <span class='num mono'>05</span>
         <h2>联系方式</h2>
         <span class='en mono'>Contact</span>
       </div>
@@ -565,6 +641,11 @@ html{scrollbar-width:thin;scrollbar-color:rgba(255,255,255,.16) transparent}
         <div class='inner'>
           <h3>聊聊机会，或者聊聊图纸</h3>
           <div class='sub'>2027 届秋招 / 实习 / 项目合作，欢迎随时邮件找我。</div>
+          <div class='intent'>
+            <div><i>意向岗位</i><span>结构设计 / 深化设计 / BIM</span></div>
+            <div><i>工作性质</i><span>2027 届校招 · 可实习</span></div>
+            <div><i>到岗时间</i><span>2027.07</span></div>
+          </div>
           <div class='mail-row'>
             <span class='addr'>z1ka@qq.com</span>
             <button class='copy' type='button' data-mail='z1ka@qq.com'>复制</button>
